@@ -4,7 +4,7 @@ import "shards-ui/dist/css/shards.min.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faTags, faHistory, faShoppingBag, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { Container, Row, Col } from "shards-react";
-
+import Main from "../main/main"
 import Deals from "../deals/deals.js"
 import Menu from "../menu/menu.js"
 import Bag from "../bag/bag.js"
@@ -62,6 +62,7 @@ export default class NavContainer extends React.Component {
 
       </Container>
       <Switch>
+          
           <Route path="/deals">
             <Deals />
           </Route>
@@ -77,6 +78,10 @@ export default class NavContainer extends React.Component {
           <Route path="/profile">
             <Profile />
           </Route>
+          <Route path="/">
+            <Main />
+          </Route>
+          
         </Switch>
       </Router>
     );
