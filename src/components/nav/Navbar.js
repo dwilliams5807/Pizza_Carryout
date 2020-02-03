@@ -63,26 +63,16 @@ export default class Navbar extends React.Component {
       </Container>
       <Switch>
           
-          <Route path="/deals">
-            <Deals />
-          </Route>
-          <Route path="/menu">
-            <Menu />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-          <Route path="/previous">
-            <Previous />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/">
-            <Main />
-          </Route>
+      <Route exact path="/" component={Main} />
+      <Route exact path="/deals" component={Deals} />
+      <Route exact path="/menu" component={Menu} />
+      <Route exact path="/cart" component={Cart} />
+      <Route exact path="/previous" component={Previous} />
+      <Route exact path="/profile" component={Profile} />
+
+
           
-        </Switch>
+      </Switch>
       </Router>
     );
   }
