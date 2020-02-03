@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
+import './Menu.css';
 import {
   Card,
   CardTitle,
@@ -20,7 +21,7 @@ class Menu extends Component {
         <Card key={item.id}>
           <CardBody>
            <CardTitle>{item.title}</CardTitle>
-           <CardImg src={item.img} alt={item.title} />
+           <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
            <CardSubtitle>{item.price}</CardSubtitle>
          </CardBody>
        </Card>
