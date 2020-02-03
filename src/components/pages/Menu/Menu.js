@@ -4,7 +4,7 @@ import React from "react";
 function Menu () {
   return (
   <div>
-    <p>Good Menu For Good People</p>
+    <p>Menu goes here</p>
   </div>
   );
 }

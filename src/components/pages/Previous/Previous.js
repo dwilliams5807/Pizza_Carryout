@@ -4,7 +4,7 @@ import React from "react";
 function Previous () {
   return (
   <div>
-    <p>Orders of the past genre</p>
+    <p>Past Orders</p>
   </div>
   );
 }

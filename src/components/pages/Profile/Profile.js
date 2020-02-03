@@ -1,12 +1,12 @@
 import React from "react";
 
 
-function Bag () {
+function Profile () {
   return (
   <div>
-    <p>Some bag stuff</p>
+    <p>Profile</p>
   </div>
   );
 }
 
-export default Bag;
+export default Profile;

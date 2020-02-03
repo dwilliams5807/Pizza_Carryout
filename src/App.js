@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from './components/header/header.js';
-import NavContainer from './components/nav/navcontainer.js';
+import Header from './components/Header/Header.js';
+import Navbar from './components/Nav/Navbar.js';
 
 
 function App() {
     return (
       <div>
         <Header />
-        <NavContainer />
+        <Navbar />
       </div>
     );
   }

@@ -1,104 +1,89 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookOpen, faTags, faHistory, faShoppingBag, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { Container, Row, Col } from "shards-react";
+import Main from "../pages/Main/Main.js"
+import Deals from "../pages/Deals/Deals.js"
+import Menu from "../pages/Menu/Menu.js"
+import Cart from "../pages/Cart/Cart.js"
+import Previous from "../pages/Previous/Previous.js"
+import Profile from "../pages/Profile/Profile.js"
+
 import "./Navbar.css";
 import {
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  FormInput,
-  Collapse
-} from "shards-react";
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-export default class FixedBar extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.toggleDropdown = this.toggleDropdown.bind(this);
-    // this.toggleNavbar = this.toggleNavbar.bind(this);
-
-    this.state = {
-      dropdownOpen: false,
-    //   collapseOpen: false
-    };
-  }
-
-  toggleDropdown() {
-    this.setState({
-      ...this.state,
-      ...{
-        dropdownOpen: !this.state.dropdownOpen
-      }
-    });
-  }
-
-//   toggleNavbar() {
-//     this.setState({
-//       ...this.state,
-//       ...{
-//         collapseOpen: !this.state.collapseOpen
-//       }
-//     });
-//   }
-
+export default class Navbar extends React.Component {
   render() {
     return (
-      <Navbar sticky type="light" theme="light">
-        <NavbarBrand href="#">Shards React</NavbarBrand>
-        {/* <NavbarToggler onClick={this.toggleNavbar} />
+      <Router>
+      <Container className="nav-menu-container">
+  
 
-        <Collapse open={this.state.collapseOpen} navbar> */}
-          <Nav navbar>
-            <NavItem>
-              <NavLink active href="#">
-                Deals
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink Active href="#">
-                Menu
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink Active href="#">
-                Bag
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink Active href="#">
-                Previous
-              </NavLink>
-            </NavItem>
-            
-            <Dropdown
-              open={this.state.dropdownOpen}
-              toggle={this.toggleDropdown}
-            >
-              <DropdownToggle nav caret>
-                UserName
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>Manage Prefrences</DropdownItem>
-                <DropdownItem>Locations</DropdownItem>
-                <DropdownItem>Sign Out</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </Nav>
+        <Row>
+          <Col>
+            <Link to="/deals">
+              <FontAwesomeIcon icon={faTags}/>
+              <h6>Deals</h6>
+           </Link>
+          </Col>
+           <Col>
+             <Link to="/menu">
+               <FontAwesomeIcon icon={faBookOpen}/>
+               <h6>Menu</h6>
+             </Link>
+           </Col>
+           <Col>
+             <Link to="/cart">
+               <FontAwesomeIcon icon={faShoppingBag}/>
+               <h6>Cart</h6>
+             </Link>
+           </Col>
+           <Col>
+             <Link to="/previous">
+               <FontAwesomeIcon icon={faHistory}/>
+               <h6>Previous</h6>
+            </Link>
+          </Col>
+          <Col>
+             <Link to="/profile">
+               <FontAwesomeIcon icon={faUserCircle}/>
+               <h6>Profile</h6>
+             </Link>
+          </Col>
+        </Row>
 
-        {/* </Collapse> */}
-      </Navbar>
+      </Container>
+      <Switch>
+          
+          <Route path="/deals">
+            <Deals />
+          </Route>
+          <Route path="/menu">
+            <Menu />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+          <Route path="/previous">
+            <Previous />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/">
+            <Main />
+          </Route>
+          
+        </Switch>
+      </Router>
     );
   }
 }
