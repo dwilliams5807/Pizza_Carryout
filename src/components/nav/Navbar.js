@@ -23,8 +23,10 @@ import {
 export default class Navbar extends React.Component {
   render() {
     return (
+
+      
       <Router>
-      <Container className="nav-menu-container">
+      <Container className="nav-menu-container fixed-bottom">
   
 
         <Row>
@@ -74,6 +76,7 @@ export default class Navbar extends React.Component {
           
       </Switch>
       </Router>
+      
     );
   }
 }
