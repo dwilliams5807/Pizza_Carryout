@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faTags, faHistory, faShoppingBag, faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import { Container, Row, Col } from "shards-react";
+import { Container, Row, Col, Card, CardBody } from "shards-react";
 import Main from "../pages/Main/Main.js"
 import Deals from "../pages/Deals/Deals.js"
 import Menu from "../pages/Menu/Menu.js"
@@ -28,8 +28,10 @@ export default class Navbar extends React.Component {
       <Router>
       <Container className="nav-menu-container fixed-bottom">
   
-
+      <Card> 
+            <CardBody>
         <Row>
+         
           <Col>
             <Link to="/deals">
               <FontAwesomeIcon icon={faTags}/>
@@ -60,8 +62,10 @@ export default class Navbar extends React.Component {
                <h6>Profile</h6>
              </Link>
           </Col>
+          
         </Row>
-
+        </CardBody>
+         </Card>
       </Container>
       <Switch>
           

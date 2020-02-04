@@ -18,22 +18,24 @@ class Menu extends Component {
   render() {
     let itemList = this.props.items.map(item=>{
       return (
-        <Card key={item.id}>
+        <Row> 
+          <Col className="">
+        <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
           <CardBody>
-           <CardTitle>{item.title}</CardTitle>
+           <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-           <CardSubtitle>{item.price}</CardSubtitle>
+             <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
          </CardBody>
        </Card>
+       </Col>
+        </Row>
       )
     })
     return ( 
-      <Container> 
-        <Row> 
-          <Col>
+      <Container className="menu-item-cont"> 
+        
           {itemList}
-          </Col>
-        </Row>
+         
       </Container> 
        );
   }

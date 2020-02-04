@@ -4,7 +4,7 @@ import React from "react";
 function Header () {
   return (
     <div>
-      <p>Welcome, Dave</p>
+      <p>Pizza Order</p>
     </div>
   );
   }

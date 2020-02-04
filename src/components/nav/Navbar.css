@@ -3,7 +3,6 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: bisque;
-  border: 1px solid black;
+  max-height: 100px;
 
 }
