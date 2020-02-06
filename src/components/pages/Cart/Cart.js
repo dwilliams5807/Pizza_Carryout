@@ -24,7 +24,7 @@ class Cart extends Component{
                         
                           <Col className="">
                              <Card classname="mt-2 mb-2 cart-col" style={{ maxWidth: "300px" }} key={item.id}>
-                              <CardImg style={{height: "50px", width: "75px"}} src={item.img} />
+                              <CardImg style={{height: "100px", width: "200px"}} src={item.img} />
                               <CardBody>
                               <CardTitle>{item.title}</CardTitle>
                               <p><b>Price: ${item.price}</b></p>
