@@ -6,3 +6,18 @@
   max-height: 100px;
 
 }
+
+.cart-badge {
+  position: fixed;
+  right: 50px;
+  bottom: 115px;
+}
+
+.link {
+  color: whitesmoke;
+  
+}
+h3 {
+  color: whitesmoke;
+}
+

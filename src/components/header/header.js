@@ -9,30 +9,19 @@ import {
  Badge
 } from "shards-react";
 
-class Header extends Component{
+export default class Header extends Component{
 
   render(){
       
      return(
-      <Navbar type="dark" theme="primary" expand="md">
+      <Navbar type="dark" theme="light" expand="md">
       <NavbarBrand href="#">Pizza Place</NavbarBrand>
       <Nav>
-        <NavItem>
-          <NavLink active path="/cart">
-                 <h5>Cart <Badge pill theme="danger">{this.props.total}</Badge></h5>
-          </NavLink>
-        </NavItem>
+       
       </Nav>
      </Navbar>
      )
   }
 }
 
-const mapStateToProps = (state)=>{
-  return{
-      total: state.addedItems.length
-  }
-}
-
-export default connect(mapStateToProps)(Header)
 

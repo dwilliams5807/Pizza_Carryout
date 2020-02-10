@@ -1,9 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
+import { connect} from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faTags, faHistory, faShoppingBag, faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import { Container, Row, Col, Card, CardBody } from "shards-react";
+import { Container, Row, Col, Card, CardBody, Badge } from "shards-react";
 import Main from "../pages/Main/Main.js"
 import Deals from "../pages/Deals/Deals.js"
 import Menu from "../pages/Menu/Menu.js"
@@ -20,14 +21,21 @@ import {
 } from "react-router-dom";
 
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
   render() {
     return (
 
       
       <Router>
       <Container className="nav-menu-container fixed-bottom">
-  
+          <div className="cart-badge">
+            <Badge  pill theme="danger">
+             <Link className="link" to="/cart">
+               <FontAwesomeIcon size="3x" icon={faShoppingBag}/>
+               <h3> {this.props.total} </h3>
+             </Link>
+             </Badge>
+             </div>
       <Card> 
             <CardBody>
         <Row>
@@ -45,10 +53,7 @@ export default class Navbar extends React.Component {
              </Link>
            </Col>
            <Col>
-             <Link to="/cart">
-               <FontAwesomeIcon icon={faShoppingBag}/>
-               <h6>Cart</h6>
-             </Link>
+          
            </Col>
            <Col>
              <Link to="/previous">
@@ -84,3 +89,11 @@ export default class Navbar extends React.Component {
     );
   }
 }
+const mapStateToProps = (state)=>{
+  return{
+      total: state.addedItems.length
+  }
+}
+
+export default connect(mapStateToProps)(Navbar)
+
