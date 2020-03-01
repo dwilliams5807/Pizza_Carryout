@@ -4,7 +4,7 @@ import Item3 from '../../images/pizza_supreme.jpg'
 import Item4 from '../../images/pizza-veg.png'
 import Item5 from '../../images/meat.png'
 import Item6 from '../../images/pizza-bbq.jpg'
-import { ADD_TO_CART} from '../actions/cartActions.js'
+import { ADD_TO_CART} from './actions/cartActions.js'
 
 
 const initState = {

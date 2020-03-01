@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { Button } from "shards-react";
 
-import { addToCart } from '../../actions/cartActions.js'
+import { addToCart } from '../../reducers/actions/cartActions.js'
 import {
   Card,
   CardTitle,

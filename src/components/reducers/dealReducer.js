@@ -2,7 +2,7 @@ import Item1 from '../../images/pizza-pep.jpg'
 import Item2 from '../../images/pizza_cali.jpg'
 import Item3 from '../../images/pizza_supreme.jpg'
 
-import { ADD_TO_CART} from '../actions/cartActions.js'
+import { ADD_TO_CART} from './actions/cartActions.js'
 
 
 const initState = {
