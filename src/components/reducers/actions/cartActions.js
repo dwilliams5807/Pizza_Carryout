@@ -6,3 +6,4 @@ export const addToCart= (id)=>{
     }
 
     export default addToCart
+

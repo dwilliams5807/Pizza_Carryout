@@ -28,7 +28,7 @@ class Cart extends Component{
                               <CardBody>
                               <CardTitle>{item.title}</CardTitle>
                               <p><b>Price: ${item.price}</b></p>
-                              <p><b>Quantity: {item.quantity}$</b></p> 
+                              <p><b>Quantity: {item.quantity}</b></p> 
                               <Button>+</Button>
                               <Button>-</Button>
                              </CardBody>
