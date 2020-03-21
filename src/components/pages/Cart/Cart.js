@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { removeItem,addQuantity,subtractQuantity} from '../../reducers/actions/cartActions'
+
 import {
     Card,
     CardTitle,
@@ -12,7 +14,20 @@ import {
     Col,
     CardBody
   } from "shards-react";
+  
 class Cart extends Component{
+   //to remove the item completely
+    handleRemove = (id)=>{
+        this.props.removeItem(id);
+    }
+    //to add the quantity
+    handleAddQuantity = (id)=>{
+        this.props.addQuantity(id);
+    }
+    //to substruct from the quantity
+    handleSubtractQuantity = (id)=>{
+        this.props.subtractQuantity(id);
+    }
 
     render(){
               
@@ -28,9 +43,11 @@ class Cart extends Component{
                               <CardBody>
                               <CardTitle>{item.title}</CardTitle>
                               <p><b>Price: ${item.price}</b></p>
-                              <p><b>Quantity: {item.quantity}</b></p> 
-                              <Button>+</Button>
-                              <Button>-</Button>
+                              <p><b>Quantity: {item.quantity}</b></p>
+                              <Link to='/cart'>
+                              <Button onClick={()=>{this.handleAddQuantity(item.id)}}>+</Button>
+                              <Button onClick={()=>{this.handleSubtractQuantity(item.id)}}>-</Button>
+                              </Link>
                              </CardBody>
                     
                            </Card>
@@ -64,5 +81,11 @@ const mapStateToProps = (state)=>{
         items: state.addedItems
     }
 }
-
-export default connect(mapStateToProps)(Cart)
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        removeItem: (id)=>{dispatch(removeItem(id))},
+        addQuantity: (id)=>{dispatch(addQuantity(id))},
+        subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

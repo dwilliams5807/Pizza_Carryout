@@ -32,7 +32,7 @@ class Navbar extends React.Component {
             <Badge  pill theme="danger">
              <Link className="link" to="/cart">
                <FontAwesomeIcon size="3x" icon={faShoppingBag}/>
-               <h3> {this.props.total} </h3>
+               <h3> {this.props.totalUnits} </h3>
              </Link>
              </Badge>
              </div>
@@ -91,7 +91,8 @@ class Navbar extends React.Component {
 }
 const mapStateToProps = (state)=>{
   return{
-      total: state.addedItems.length
+      total: state.addedItems.length,
+      totalUnits: state.totalUnits
   }
 }
 

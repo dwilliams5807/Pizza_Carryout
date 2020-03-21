@@ -41,7 +41,7 @@ class Header extends Component{
   changeLocation(location) {
     this.setState({
   
-      selectedLocation: location
+      location: this.state.selectedLocation
       
     });
   }
@@ -109,6 +109,7 @@ class Header extends Component{
 const mapStateToProps = (state)=>{
   return{
       total: state.addedItems.length
+    
   }
 }
 

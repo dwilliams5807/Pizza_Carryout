@@ -4,15 +4,15 @@ import Item3 from '../../images/pizza_supreme.jpg'
 import Item4 from '../../images/pizza-veg.png'
 import Item5 from '../../images/meat.png'
 import Item6 from '../../images/pizza-bbq.jpg'
-import { ADD_TO_CART} from './actions/cartActions.js'
+import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY } from './actions/cartActions.js'
 import { CHECKOUT } from './actions/checkout.js'
 ;
 
 const initState = {
     items: [
         
-            {id:101,title:'Individual Pizza', price:8.49,img:Item1, type: 'Pizza'},
-            {id:102,title:'Medium Pizza', price:12,img:Item1, type: 'Pizza'},
+            {id:101,title:'Individual Pizza', price:8.49,img:Item1, type: 'Pizza', quantity:0},
+            {id:102,title:'Medium Pizza', price:12,img:Item1, type: 'Pizza', quantity:0},
             {id:103,title:'Large Pizza', price:12,img:Item1, type: 'Pizza'},
             {id:104,title:'Cauliflower Crust Pizza', price:12,img: Item2, type: 'Pizza'},
             {id:201,title:'Family Fun Deal', desc: "Bring home the FUN with our Family Fun Deal that includes 2 Large, 1-Topping Pizzas*, 1 Goody Bag with games and toys and 800 Tickets to use on your next visit!", price:20,img: Item2, type: 'pack'},
@@ -90,45 +90,30 @@ const initState = {
 
 
     addedItems:[],
-    total: 0
+    total: 0,
+
+    totalUnits: 0
 
 }
 const cartReducer= (state = initState,action)=>{
     
     if(action.type === ADD_TO_CART){
-
         let addedItem = state.items.find(item=> item.id === action.id)
         //check if the action id exists in the addedItems
-        let existed_item= state.addedItems.find(item=> action.id === item.id)
-        let dealItem= state.deals.find(item=> action.id === item.id)
-        let dealUsed= state.dealUsed
+       let existed_item= state.addedItems.find(item=> action.id === item.id)
+   
        if(existed_item)
        {
           addedItem.quantity += 1 
+          state.totalUnits += 1
            return{
               ...state,
                total: state.total + addedItem.price 
                 }
-      } if(dealItem & state.dealUsed === true) {
-          return{
-              
-
-
-          }
       }
-      if(dealItem & state.dealUsed === false) {
-        dealItem.quantity = 1;
-        let newTotal = state.total + dealItem.price 
-        return{
-            ...state,
-            addedItems: [...state.addedItems, dealItem],
-            total: newTotal,
-            dealUsed: true,
-
-        }
-    }
        else{
           addedItem.quantity = 1;
+          state.totalUnits += 1
           //calculating the total
           let newTotal = state.total + addedItem.price 
           
@@ -140,17 +125,54 @@ const cartReducer= (state = initState,action)=>{
           
       }
   }
-  if(action.type === CHECKOUT) {
-    let previousItems = state.addedItems
-    let previousTotal = state.total
-       return {
-           ...state,
-           previous: [previousItems, previousTotal],
-       }
-     
+  if(action.type === REMOVE_ITEM){
+      let itemToRemove= state.addedItems.find(item=> action.id === item.id)
+      let new_items = state.addedItems.filter(item=> action.id !== item.id)
+      state.totalUnits -= 1
+      //calculating the total
+      let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
+      console.log(itemToRemove)
+
+      return{
+          ...state,
+          addedItems: new_items,
+          total: newTotal
+      }
   }
-  else{
-      return state
+  //INSIDE CART COMPONENT
+  if(action.type=== ADD_QUANTITY){
+     state.totalUnits += 1
+      let addedItem = state.items.find(item=> item.id === action.id)
+        addedItem.quantity += 1 
+        let newTotal = state.total + addedItem.price
+        return{
+            ...state,
+            total: newTotal
+        }
   }
+  if(action.type=== SUB_QUANTITY){  
+      let addedItem = state.items.find(item=> item.id === action.id) 
+       state.totalUnits -= 1
+      //if the qt == 0 then it should be removed
+      if(addedItem.quantity === 1){
+          let new_items = state.addedItems.filter(item=>item.id !== action.id)
+          let newTotal = state.total - addedItem.price
+          return{
+              ...state,
+              addedItems: new_items,
+              total: newTotal
+          }
+      }
+      else {
+          addedItem.quantity -= 1
+          let newTotal = state.total - addedItem.price
+          return{
+              ...state,
+              total: newTotal
+          }
+      }
+      
+  }
+  return state
 }
 export default cartReducer;
