@@ -189,7 +189,7 @@ class Menu extends Component {
     })
     return ( 
       
-   <div>
+   <div className="menu-div">
      <Container className="menu-item-cont"> 
         <Button block onClick={this.togglePacks}>Family and Party Packs</Button>
         <Collapse open={this.state.collapsePacks}>

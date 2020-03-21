@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { connect} from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Main from "../pages/Main/Main.js"
+import Deals from "../pages/Deals/Deals.js"
+import Menu from "../pages/Menu/Menu.js"
+import Cart from "../pages/Cart/Cart.js"
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import {
  Navbar,
  Nav,
@@ -17,7 +23,8 @@ import {
 import "./Header.css";
 
 
-export default class Header extends Component{
+
+class Header extends Component{
   constructor(props) {
     super(props);
 
@@ -65,17 +72,19 @@ export default class Header extends Component{
       <NavbarToggler onClick={this.toggleNavbar} />
 
         <Collapse open={this.state.collapseOpen} navbar>
+      
           <Nav navbar >
             <NavItem>
-              <NavLink active href="#">
+              <NavLink active href="./menu">
                 Menu
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink active href="#">
+              <NavLink active href="./deals">
                 Deals
               </NavLink>
             </NavItem>
+
             <Dropdown
               open={this.state.dropdownOpen}
               toggle={this.toggleDropdown}
@@ -90,10 +99,18 @@ export default class Header extends Component{
               </DropdownMenu>
             </Dropdown>
           </Nav>
-        </Collapse>
+       
+
+      </Collapse>
      </Navbar>
      )
   }
 }
+const mapStateToProps = (state)=>{
+  return{
+      total: state.addedItems.length
+  }
+}
 
+export default connect(mapStateToProps)(Header)
 

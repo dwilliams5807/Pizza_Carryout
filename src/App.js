@@ -3,6 +3,8 @@ import { createStore } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import Header from './components/Header/Header.js';
 import Navbar from './components/Nav/Navbar.js';
+import Bumper from './components/global/Bumper';
+
 import { Provider } from 'react-redux';
 import { PersistGate} from 'redux-persist/integration/react'
 import {store, persistor} from './components/reducers/store/store.js'
@@ -13,8 +15,9 @@ function App() {
       // <Provider store={store}>
       // <PersistGate loading={null} persistor={persistor}>
       <div>
-        <Header />
-        <Navbar />
+       <Header />
+      <Navbar />
+      <Bumper></Bumper>
       </div>
     //   </PersistGate>
     // </Provider>
