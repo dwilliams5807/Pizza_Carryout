@@ -75,9 +75,9 @@ const initState = {
             {id:701,title:'House Salad', desc: "Traditional Pepperoni Pizza", price:4.99,img:Item1, type: 'salad'},
         ],
         deals: [
-            {id:901,title:'$10 Large 1 Topping Pizza', desc: "Curbside/ Carryout", price:10,img:Item1, type: 'deal'},
-            {id:902,title:'$5 off first mobile order', desc: "Curbside/ Carryout/ In-Store", price:-5,img: Item2, type:'deal'},
-            {id:903,title:'Free Dessert with mobile order', desc: "Cinnamon Sticks",price:0,img: Item3, type: 'deal'},
+            {id:901,title:'$4.99 Large Cheese Pizza', desc: "Carryout Deal", price:4.99,img:Item1, type: 'deal'},
+            {id:902,title:'$6.99 Large Pepperoni Pizza', desc: "Carryout Deal", price:-5,img: Item2, type:'deal'},
+            {id:903,title:'Unicorn Churros', desc: "Cinnamon Sticks",price:3.99,img: Item3, type: 'deal'},
         ],
         desserts: [
             {id:601,title:'Unicorm Churros', desc: "Traditional Pepperoni Pizza", price:14,img:Item1, type: 'dessert'},
@@ -91,7 +91,7 @@ const initState = {
 
     addedItems:[],
     total: 0,
-
+    selectedLocation: "Select Location",
     totalUnits: 0
 
 }

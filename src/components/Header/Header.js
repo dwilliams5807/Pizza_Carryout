@@ -5,6 +5,8 @@ import Main from "../pages/Main/Main.js"
 import Deals from "../pages/Deals/Deals.js"
 import Menu from "../pages/Menu/Menu.js"
 import Cart from "../pages/Cart/Cart.js"
+import { logo } from "../../images/CECLogo_Type_White_No_S.png"
+
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import {
  Navbar,
@@ -21,6 +23,8 @@ import {
  DropdownItem
 } from "shards-react";
 import "./Header.css";
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -34,16 +38,20 @@ class Header extends Component{
     this.state = {
       dropdownOpen: false,
       collapseOpen: false,
-      selectedLocation: "Select Location"
+      
     };
     this.changeLocation = this.changeLocation.bind(this);
   }
   changeLocation(location) {
     this.setState({
-  
-      location: this.state.selectedLocation
-      
+      ...this.state,
+      ...{
+        selectedLocation: location
+      }
     });
+    console.log(this.props.selectedLocation)
+
+
   }
   
   toggleDropdown() {
@@ -67,23 +75,15 @@ class Header extends Component{
   render(){
       
      return(
-      <Navbar sticky className="navbar" type="dark" expand="md">
-      <NavbarBrand className="brand" href="#"></NavbarBrand>
+      <Navbar sticky className="" type="dark" expand="md">
+      <NavbarBrand className="" href="#">
+       <div>{logo}</div> 
+      </NavbarBrand>
       <NavbarToggler onClick={this.toggleNavbar} />
 
         <Collapse open={this.state.collapseOpen} navbar>
       
           <Nav navbar >
-            <NavItem>
-              <NavLink active href="./menu">
-                Menu
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink active href="./deals">
-                Deals
-              </NavLink>
-            </NavItem>
 
             <Dropdown
               open={this.state.dropdownOpen}
@@ -93,9 +93,11 @@ class Header extends Component{
                 {this.state.selectedLocation}
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem name="location"  onClick={() => {this.changeLocation("South Austin");}} >South Austin</DropdownItem>
-                <DropdownItem name="location"  onClick={() => {this.changeLocation("Mopac");}} >Mopac</DropdownItem>
-                <DropdownItem name="location"  onClick={() => {this.changeLocation("Round Rock");}} >Round Rock</DropdownItem>
+                
+                <DropdownItem name="location" value={"South Austin"} onClick={() => {this.changeLocation("South Austin");}} >South Austin</DropdownItem>
+                <DropdownItem name="location" value={"Mopac"} onClick={() => {this.changeLocation("Mopac");}} >Mopac</DropdownItem>
+                <DropdownItem name="location" value={"Round Rock"} onClick={() => {this.changeLocation("Round Rock");}} >Round Rock</DropdownItem>
+              
               </DropdownMenu>
             </Dropdown>
           </Nav>
@@ -108,7 +110,8 @@ class Header extends Component{
 }
 const mapStateToProps = (state)=>{
   return{
-      total: state.addedItems.length
+      total: state.addedItems.length,
+      location: state.selectedLocation
     
   }
 }

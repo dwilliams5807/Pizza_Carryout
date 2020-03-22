@@ -12,7 +12,10 @@ import {
     Container,
     Row,
     Col,
-    CardBody
+    CardBody,
+    ListGroup,
+    ListGroupItem,
+    ListGroupItemText
   } from "shards-react";
   
 class Cart extends Component{
@@ -37,21 +40,19 @@ class Cart extends Component{
                     return(
 
                         
-                          <Col className="">
-                             <Card classname="mt-2 mb-2 cart-col" style={{ maxWidth: "300px" }} key={item.id}>
-                              <CardImg style={{height: "100px", width: "200px"}} src={item.img} />
-                              <CardBody>
-                              <CardTitle>{item.title}</CardTitle>
-                              <p><b>Price: ${item.price}</b></p>
-                              <p><b>Quantity: {item.quantity}</b></p>
+                          <ListGroupItem className="" key={item.id}>
+                              <ListGroupItemText>
+                                  {item.quantity} X {item.title} @ ${item.price}/ Ea
+                              </ListGroupItemText>
+                             <ListGroupItemText>
                               <Link to='/cart'>
                               <Button onClick={()=>{this.handleAddQuantity(item.id)}}>+</Button>
                               <Button onClick={()=>{this.handleSubtractQuantity(item.id)}}>-</Button>
                               </Link>
-                             </CardBody>
+                              </ListGroupItemText>
                     
-                           </Card>
-                          </Col>
+                  
+                          </ListGroupItem>
                       
                                              
                     )
@@ -64,13 +65,13 @@ class Cart extends Component{
        return(
             <Container>
                  <h5>Your Order:</h5>
-                <Row> 
+                 <ListGroup>
                     
                     
                         {addedItems}
                      
                
-                </Row>
+                </ListGroup>
             </Container>
        )
     }

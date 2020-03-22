@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import { Button } from "shards-react";
 import './Menu.css';
 import { addToCart } from '../../reducers/actions/cartActions.js'
 import {
+  Button,
   Card,
   CardTitle,
   CardImg,
@@ -12,7 +12,10 @@ import {
   Row,
   Col,
   CardBody,
-  Collapse
+  Collapse,
+  Modal,
+  ModalBody,
+  ModalHeader
 } from "shards-react";
 
 
@@ -27,6 +30,7 @@ class Menu extends Component {
     this.toggleSalads = this.toggleSalads.bind(this);
     this.toggleDesserts = this.toggleDesserts.bind(this);
     this.toggleBeverages = this.toggleBeverages.bind(this);
+
 
     this.state = { collapsePizza: false, collapseSpecialty: false, collapseApps: false, collapsePacks: false, collapseDeals: false, collapseSalads: false, collapseDesserts: false, collapseBeverages: false };
   }
@@ -54,6 +58,7 @@ class Menu extends Component {
   toggleBeverages() {
     this.setState({ collapseBeverages: !this.state.collapseBeverages });
   }
+
   handleClick = (id)=>{
     this.props.addToCart(id); 
 }
@@ -62,15 +67,17 @@ class Menu extends Component {
     let pizzaList = this.props.pizzas.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
+        <Col className="">
+           <a  onClick={()=>{this.handleClick(item.id)}} >
+            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
+            <CardTitle >{item.title}</CardTitle>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <p>${item.price}</p>
            </CardBody>
           </Card>
+          </a>
         </Col>
         
       )
@@ -78,15 +85,17 @@ class Menu extends Component {
     let specialList = this.props.specialty.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
+        <Col className="">
+           <a  onClick={()=>{this.handleClick(item.id)}} >
+            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
+            <CardTitle >{item.title}</CardTitle>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <p>${item.price}</p>
            </CardBody>
           </Card>
+          </a>
         </Col>
         
       )
@@ -94,63 +103,71 @@ class Menu extends Component {
     let appList = this.props.apps.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
-            <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
-           </CardBody>
-          </Card>
-        </Col>
+     <Col className="">
+        <a  onClick={()=>{this.handleClick(item.id)}} >
+         <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+         <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
+         <CardBody>
+         <CardTitle >{item.title}</CardTitle>
+         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+         <p>${item.price}</p>
+        </CardBody>
+       </Card>
+       </a>
+     </Col>
         
       )
     })
     let packList = this.props.packs.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
-            <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
-           </CardBody>
-          </Card>
-        </Col>
+       <Col className="">
+        <a  onClick={()=>{this.handleClick(item.id)}} >
+         <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+         <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
+         <CardBody>
+         <CardTitle >{item.title}</CardTitle>
+         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+         <p>${item.price}</p>
+        </CardBody>
+       </Card>
+       </a>
+     </Col>
         
       )
     })
     let dealsList = this.props.deals.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
-            <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
-           </CardBody>
-          </Card>
-        </Col>
+       <Col className="">
+        <a  onClick={()=>{this.handleClick(item.id)}} >
+         <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+         <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
+         <CardBody>
+         <CardTitle >{item.title}</CardTitle>
+         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+         <p>${item.price}</p>
+        </CardBody>
+       </Card>
+       </a>
+     </Col>
         
       )
     })
     let saladList = this.props.salads.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
+        <Col className="">
+           <a  onClick={()=>{this.handleClick(item.id)}} >
+            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
+            <CardTitle >{item.title}</CardTitle>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <p>${item.price}</p>
            </CardBody>
           </Card>
+          </a>
         </Col>
         
       )
@@ -158,15 +175,17 @@ class Menu extends Component {
     let dessertList = this.props.desserts.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
+        <Col className="">
+           <a  onClick={()=>{this.handleClick(item.id)}} >
+            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
+            <CardTitle >{item.title}</CardTitle>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <p>${item.price}</p>
            </CardBody>
           </Card>
+          </a>
         </Col>
         
       )
@@ -174,15 +193,17 @@ class Menu extends Component {
     let beverageList = this.props.beverages.map(item=>{
       return (
         
-          <Col className="">
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "500px" }}  key={item.id}>
+        <Col className="">
+           <a  onClick={()=>{this.handleClick(item.id)}} >
+            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
+            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
-            <CardTitle style={{ position: "absolute", top: 20, right: 20 }}>{item.title}</CardTitle>
-            <CardImg style={{ maxWidth: "200px" }} src={item.img} alt={item.title} />
-            <span style={{ position: "absolute", bottom: 40, right: 100 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">+</Button></span>
-            <div style={{ position: "absolute", bottom: 40, right: 20 }}>${item.price}</div>
+            <CardTitle >{item.title}</CardTitle>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <p>${item.price}</p>
            </CardBody>
           </Card>
+          </a>
         </Col>
         
       )

@@ -1,6 +1,5 @@
 import React from 'react';
-import { createStore } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
+
 import Header from './components/Header/Header.js';
 import Navbar from './components/Nav/Navbar.js';
 import Bumper from './components/global/Bumper';
@@ -14,12 +13,12 @@ function App() {
     return (
       // <Provider store={store}>
       // <PersistGate loading={null} persistor={persistor}>
-      <div>
-       <Header />
-      <Navbar />
-      <Bumper></Bumper>
-      </div>
-    //   </PersistGate>
+         <div>
+          <Header />
+          <Navbar />
+          <Bumper />
+         </div>
+    //  </PersistGate>
     // </Provider>
     );
   }
