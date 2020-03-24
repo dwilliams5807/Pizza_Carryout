@@ -11,6 +11,10 @@ import Menu from "../pages/Menu/Menu.js"
 import Cart from "../pages/Cart/Cart.js"
 import Previous from "../pages/Previous/Previous.js"
 import Profile from "../pages/Profile/Profile.js"
+import Animate from 'animate.css-react'
+import 'animate.css/animate.css'
+
+
 
 import "./Navbar.css";
 import {
@@ -22,20 +26,16 @@ import {
 
 
 class Navbar extends React.Component {
+
+
+
   render() {
     return (
 
       
       <Router>
       <Container className="nav-menu-container fixed-bottom">
-          <div className="cart-badge">
-            <Badge  pill theme="danger">
-             <Link className="link" to="/cart">
-               <FontAwesomeIcon size="3x" icon={faShoppingBag}/>
-               <h3> {this.props.totalUnits} </h3>
-             </Link>
-             </Badge>
-             </div>
+
       <Card> 
             <CardBody>
         <Row>
@@ -56,16 +56,19 @@ class Navbar extends React.Component {
           
            </Col>
            <Col>
-             <Link to="/previous">
-               <FontAwesomeIcon icon={faHistory}/>
-               <h6>Previous</h6>
-            </Link>
-          </Col>
-          <Col>
-             <Link to="/profile">
-               <FontAwesomeIcon icon={faUserCircle}/>
-               <h6>Profile</h6>
+           <Animate
+           change="bounce"
+           >
+          <div className="cart-badge">
+          
+          <Badge  theme="light">
+             <Link className="cart-link" to="/cart">
+               <FontAwesomeIcon size="5x" icon={faShoppingBag}/>
+               <h3> {this.props.totalUnits} </h3>
              </Link>
+             </Badge>
+             </div>
+             </Animate>
           </Col>
           
         </Row>

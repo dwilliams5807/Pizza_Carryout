@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './components/Header/Header.js';
+import Main from './components/pages/Main/Main.js';
 import Navbar from './components/Nav/Navbar.js';
 import Bumper from './components/global/Bumper';
 
@@ -15,7 +16,7 @@ function App() {
       // <PersistGate loading={null} persistor={persistor}>
          <div>
           <Header />
-          <Navbar />
+          <Main />
           <Bumper />
          </div>
     //  </PersistGate>

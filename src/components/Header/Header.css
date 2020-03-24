@@ -1,6 +1,10 @@
 .navbar {
     background-color: #c42939;
     height: 40px;
+    
+
+    top:0;
+    width: 100%;
 }
 .brand-image {
     background-image: url(../../images/CECLogo_Type_White_No_S.png);

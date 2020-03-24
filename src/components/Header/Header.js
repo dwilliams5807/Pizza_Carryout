@@ -75,7 +75,7 @@ class Header extends Component{
   render(){
       
      return(
-      <Navbar sticky className="" type="dark" expand="md">
+      <Navbar className="navbar" type="dark" expand="md">
       <NavbarBrand className="" href="#">
        <div>{logo}</div> 
       </NavbarBrand>

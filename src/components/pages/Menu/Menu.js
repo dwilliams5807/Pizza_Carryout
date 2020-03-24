@@ -19,6 +19,7 @@ import {
 } from "shards-react";
 
 
+
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -31,9 +32,11 @@ class Menu extends Component {
     this.toggleDesserts = this.toggleDesserts.bind(this);
     this.toggleBeverages = this.toggleBeverages.bind(this);
 
+   
 
-    this.state = { collapsePizza: false, collapseSpecialty: false, collapseApps: false, collapsePacks: false, collapseDeals: false, collapseSalads: false, collapseDesserts: false, collapseBeverages: false };
+    this.state = {  collapsePizza: false, collapseSpecialty: false, collapseApps: false, collapsePacks: false, collapseDeals: false, collapseSalads: false, collapseDesserts: false, collapseBeverages: false };
   }
+
   togglePizza() {
     this.setState({ collapsePizza: !this.state.collapsePizza });
   }
@@ -63,7 +66,12 @@ class Menu extends Component {
     this.props.addToCart(id); 
 }
 
+
+
   render() {
+    
+
+      
     let pizzaList = this.props.pizzas.map(item=>{
       return (
         
@@ -82,6 +90,7 @@ class Menu extends Component {
         
       )
     })
+    
     let specialList = this.props.specialty.map(item=>{
       return (
         
@@ -210,7 +219,8 @@ class Menu extends Component {
     })
     return ( 
       
-   <div className="menu-div">
+   <div className="menu-div">       
+     
      <Container className="menu-item-cont"> 
         <Button block onClick={this.togglePacks}>Family and Party Packs</Button>
         <Collapse open={this.state.collapsePacks}>

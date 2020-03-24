@@ -4,7 +4,7 @@ import Item3 from '../../images/pizza_supreme.jpg'
 import Item4 from '../../images/pizza-veg.png'
 import Item5 from '../../images/meat.png'
 import Item6 from '../../images/pizza-bbq.jpg'
-import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY } from './actions/cartActions.js'
+import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,SET_LOCATION } from './actions/cartActions.js'
 import { CHECKOUT } from './actions/checkout.js'
 ;
 
@@ -173,6 +173,17 @@ const cartReducer= (state = initState,action)=>{
       }
       
   }
+  if(action.type=== SET_LOCATION){
+    
+     
+       let newLocation = action.location
+       return{
+           ...state,
+           selectedLocation: newLocation
+       }
+ }
+
+
   return state
 }
 export default cartReducer;

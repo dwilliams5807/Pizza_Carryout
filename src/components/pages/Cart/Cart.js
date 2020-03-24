@@ -72,6 +72,14 @@ class Cart extends Component{
                      
                
                 </ListGroup>
+                  
+                  <p>Subtotal: ${this.props.subtotal}</p>
+                  <p>Tax: ${this.props.tax}</p>
+                  <h5>Total: ${this.props.total}</h5>
+                <Button>
+                    Checkout
+                </Button>
+
             </Container>
        )
     }
@@ -79,7 +87,10 @@ class Cart extends Component{
 
 const mapStateToProps = (state)=>{
     return{
-        items: state.addedItems
+        items: state.addedItems,
+        subtotal: (state.total).toFixed(2),
+        tax: (state.total * 0.0825).toFixed(2),
+        total: ( state.total * 0.0825 + state.total).toFixed(2),
     }
 }
 const mapDispatchToProps = (dispatch)=>{
