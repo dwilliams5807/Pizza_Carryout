@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button, List } from 'semantic-ui-react';
+
 import { connect} from 'react-redux'
+import { ListGroup, ListGroupItem, ListGroupItemText, Button, Container, Row, Col, Card, CardBody } from "shards-react";
 
 
 class ReviewOrder extends Component{
@@ -16,34 +17,68 @@ class ReviewOrder extends Component{
 
     render(){
         const {values: { name, email, phone }} = this.props;
+        let addedItems = this.props.items.length ?
+            (  
+                this.props.items.map(item=>{
+                    return(
 
+                        
+                          <ListGroupItem className="" key={item.id}>
+                              <ListGroupItemText>
+                                  {item.quantity} X {item.title} ${item.price * item.quantity}
+                              </ListGroupItemText>
+                          </ListGroupItem>
+                      
+                                             
+                    )
+                })
+            ):
+            (
+                <p>There are no items in your order.</p>
+             )
         return(
             <div>
-                <h1 className="ui centered">Review Your Order</h1>
-                <p>Click Confirm if the following details have been correctly entered</p>
-                <List>
-                    <List.Item>
-                        <List.Icon name='users' />
-                        <List.Content>Pickup name: {name}</List.Content>
-                    </List.Item>
-                    <List.Item>
-                        <List.Icon name='mail' />
-                        <List.Content>Order confirmation will be sent to {email}</List.Content>
-                    </List.Item>
+                <Container>
+                    <Row>
+                        <Col>
+                           <h1 className="ui centered">Review Your Order</h1>
+                           <Button onClick={this.back}>Back</Button>
+                       </Col>
+                    </Row>
 
-                    <List.Item>
-                        <List.Icon name='phone' />
-                        <List.Content>Phone:{phone}</List.Content>
-                    </List.Item>
-                    <List.Item>
-                        <List.Icon name='phone' />
-                        <List.Content></List.Content>
-                    </List.Item>
-     
-                </List>
+                    <Row>
+                      <Col>
+                           <Card>
+                               <CardBody>
+                                   <ListGroup>
+                                       {addedItems}
+                                       <ListGroupItem>Subtotal: ${this.props.subtotal} Tax: ${this.props.tax}</ListGroupItem>
+                                       <ListGroupItem><h5>Total: ${this.props.total}</h5></ListGroupItem> 
+                                       
 
-                <Button onClick={this.back}>Back</Button>
-                <Button onClick={this.saveAndContinue}>Confirm Order</Button>
+                                   </ListGroup>
+                               </CardBody>
+                           </Card>
+                        </Col>
+                        <Col>
+                           <Card>
+                               <CardBody>
+                                    <ListGroup>
+                                        <ListGroupItem>Pickup name: {name}</ListGroupItem>
+                                        <ListGroupItem>Order confirmation will be sent to {email}</ListGroupItem>
+                                        <ListGroupItem>Phone:{phone}</ListGroupItem>
+                                        <ListGroupItem>Location:{this.props.location}</ListGroupItem>
+                                        <ListGroupItem>Pickup Time: Ready in 15-20 minutes</ListGroupItem>
+                                    </ListGroup>
+                               </CardBody>
+                           </Card>
+                        </Col>
+                    </Row>
+                </Container>
+                
+
+                
+                <Button block onClick={this.saveAndContinue}>Confirm Order</Button>
             </div>
         )
     }

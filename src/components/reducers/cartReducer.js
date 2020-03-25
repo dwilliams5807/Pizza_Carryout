@@ -88,11 +88,12 @@ const initState = {
             {id:801,title:'Can of Soda', price:1.5, type: 'beverage'},
         ],
 
-
+    orderNumber: (Math.round(Math.random() * 10000) + 10000 ),
     addedItems:[],
     total: 0,
     selectedLocation: "Select Location",
-    totalUnits: 0
+    totalUnits: 0,
+    isCartVisible:false,
 
 }
 const cartReducer= (state = initState,action)=>{

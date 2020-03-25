@@ -17,6 +17,8 @@ import {
   ModalBody,
   ModalHeader
 } from "shards-react";
+import toggleCartOn from '../Main/Main.js'
+import Main from "../Main/Main";
 
 
 
@@ -65,7 +67,9 @@ class Menu extends Component {
   handleClick = (id)=>{
     this.props.addToCart(id); 
 }
-
+componentDidMount() {
+    toggleCartOn();
+} 
 
 
   render() {
@@ -76,7 +80,7 @@ class Menu extends Component {
       return (
         
         <Col className="">
-           <a  onClick={()=>{this.handleClick(item.id)}} >
+           
             <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
@@ -85,7 +89,7 @@ class Menu extends Component {
             <p>${item.price}</p>
            </CardBody>
           </Card>
-          </a>
+          
         </Col>
         
       )
@@ -95,7 +99,7 @@ class Menu extends Component {
       return (
         
         <Col className="">
-           <a  onClick={()=>{this.handleClick(item.id)}} >
+          
             <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
@@ -104,7 +108,7 @@ class Menu extends Component {
             <p>${item.price}</p>
            </CardBody>
           </Card>
-          </a>
+          
         </Col>
         
       )
@@ -113,7 +117,7 @@ class Menu extends Component {
       return (
         
      <Col className="">
-        <a  onClick={()=>{this.handleClick(item.id)}} >
+       
          <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
          <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
          <CardBody>
@@ -122,7 +126,7 @@ class Menu extends Component {
          <p>${item.price}</p>
         </CardBody>
        </Card>
-       </a>
+       
      </Col>
         
       )
@@ -131,7 +135,7 @@ class Menu extends Component {
       return (
         
        <Col className="">
-        <a  onClick={()=>{this.handleClick(item.id)}} >
+      
          <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
          <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
          <CardBody>
@@ -140,7 +144,7 @@ class Menu extends Component {
          <p>${item.price}</p>
         </CardBody>
        </Card>
-       </a>
+     
      </Col>
         
       )
@@ -149,7 +153,7 @@ class Menu extends Component {
       return (
         
        <Col className="">
-        <a  onClick={()=>{this.handleClick(item.id)}} >
+      
          <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
          <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
          <CardBody>
@@ -158,7 +162,7 @@ class Menu extends Component {
          <p>${item.price}</p>
         </CardBody>
        </Card>
-       </a>
+   
      </Col>
         
       )
@@ -167,7 +171,7 @@ class Menu extends Component {
       return (
         
         <Col className="">
-           <a  onClick={()=>{this.handleClick(item.id)}} >
+        
             <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
@@ -176,7 +180,7 @@ class Menu extends Component {
             <p>${item.price}</p>
            </CardBody>
           </Card>
-          </a>
+     
         </Col>
         
       )
@@ -185,7 +189,7 @@ class Menu extends Component {
       return (
         
         <Col className="">
-           <a  onClick={()=>{this.handleClick(item.id)}} >
+        
             <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
@@ -194,7 +198,7 @@ class Menu extends Component {
             <p>${item.price}</p>
            </CardBody>
           </Card>
-          </a>
+      
         </Col>
         
       )
@@ -203,7 +207,7 @@ class Menu extends Component {
       return (
         
         <Col className="">
-           <a  onClick={()=>{this.handleClick(item.id)}} >
+      
             <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
@@ -212,7 +216,7 @@ class Menu extends Component {
             <p>${item.price}</p>
            </CardBody>
           </Card>
-          </a>
+     
         </Col>
         
       )
@@ -311,7 +315,8 @@ const mapStateToProps = (state)=>{
     desserts: state.desserts,
     beverages: state.beverages,
     apps: state.apps,
-    salads: state.salads
+    salads: state.salads,
+    visible: state.isCartVisible
 
   }
 }
@@ -319,7 +324,9 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps= (dispatch)=>{
     
   return{
-      addToCart: (id)=>{dispatch(addToCart(id))}
+      addToCart: (id)=>{dispatch(addToCart(id))},
+      isVisible: this.state.isCartVisible,
   }
 }
+
 export default connect(mapStateToProps,mapDispatchToProps)(Menu);

@@ -25,8 +25,13 @@ import {
 
 
 class Main extends React.Component {
-
-
+  
+  toggleCartOn = () => {
+    this.setState({ isCartVisible: !this.state.isCartVisible === true});
+  };
+  toggleCartOff = () => {
+    this.setState({ isCartVisible: !this.state.isCartVisible === false  });
+  };
 
   render() {
 
@@ -51,7 +56,7 @@ class Main extends React.Component {
            <Animate
            change="bounce"
                >
-                <div className="cart-badge">
+            <div className={'cart ${isCartVisible ? "cart-badge" : "hidden"}'}>
           
               <Badge  theme="light">
                 <Link className="cart-link" to="/cart">
