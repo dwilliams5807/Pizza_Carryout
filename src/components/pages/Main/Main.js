@@ -56,7 +56,7 @@ class Main extends React.Component {
            <Animate
            change="bounce"
                >
-            <div className={'cart ${isCartVisible ? "cart-badge" : "hidden"}'}>
+            <div className="cart-badge">
           
               <Badge  theme="light">
                 <Link className="cart-link" to="/cart">

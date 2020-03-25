@@ -67,9 +67,7 @@ class Menu extends Component {
   handleClick = (id)=>{
     this.props.addToCart(id); 
 }
-componentDidMount() {
-    toggleCartOn();
-} 
+
 
 
   render() {
@@ -325,7 +323,6 @@ const mapDispatchToProps= (dispatch)=>{
     
   return{
       addToCart: (id)=>{dispatch(addToCart(id))},
-      isVisible: this.state.isCartVisible,
   }
 }
 

@@ -93,7 +93,7 @@ const initState = {
     total: 0,
     selectedLocation: "Select Location",
     totalUnits: 0,
-    isCartVisible:false,
+    isCartVisible: true,
 
 }
 const cartReducer= (state = initState,action)=>{
