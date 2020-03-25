@@ -7,7 +7,7 @@ import Menu from "../pages/Menu/Menu.js"
 import Cart from "../pages/Cart/Cart.js"
 import { logo } from "../../images/CECLogo_Type_White_No_S.png"
 
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingBag, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import {
  Navbar,
  Nav,
@@ -33,12 +33,13 @@ class Header extends Component{
   render(){
       
      return(
-      <Navbar className="navbar" type="dark" expand="md">
+      <Navbar className="navbar" type="dark">
       <NavbarBrand className="" href="#">
        Chuck E. Carryout
       </NavbarBrand>
-       <NavLink href='/'> 
-         {this.props.location}
+       <NavLink className="nav-link" href='/'> 
+       <FontAwesomeIcon size="2x" icon={faMapMarkerAlt}/>
+          {this.props.location}
        </NavLink>
      </Navbar>
      )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormSelect, FormRadio } from "shards-react";
+import { FormSelect, FormRadio, Button } from "shards-react";
 import { connect } from 'react-redux';
 import { setLocation } from '../../reducers/actions/cartActions.js'
 import {
@@ -52,7 +52,7 @@ export class SelectLocation extends Component {
               <FormRadio value="Round Rock" checked={this.props.selectedLocation === "Round Rock"} onChange={() => {this.setLocation("Round Rock");}}>Round Rock</FormRadio>
      
                 <Link to='/menu'>
-                    <button>Continue</button>
+                    <Button>Continue</Button>
                 </Link>
             </div>
         )

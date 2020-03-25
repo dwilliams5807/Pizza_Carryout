@@ -9,6 +9,7 @@ import Deals from "../Deals/Deals.js"
 import Menu from "../Menu/Menu.js"
 import SelectLocation from "../SelectLocation/SelectLocation.js"
 import Cart from "../Cart/Cart.js"
+import Checkout from "../Checkout/Checkout.js"
 import Animate from 'animate.css-react'
 import 'animate.css/animate.css'
 
@@ -71,6 +72,8 @@ class Main extends React.Component {
       <Route exact path="/deals" component={Deals} />
       <Route exact path="/menu" component={Menu} />
       <Route exact path="/cart" component={Cart} />
+      <Route exact path="/checkout" component={Checkout} />
+
 
 
 

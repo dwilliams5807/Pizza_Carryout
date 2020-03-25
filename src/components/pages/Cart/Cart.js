@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeItem,addQuantity,subtractQuantity} from '../../reducers/actions/cartActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUndo } from '@fortawesome/free-solid-svg-icons'
+import "./Cart.css";
+
 
 import {
     Card,
@@ -17,6 +21,8 @@ import {
     ListGroupItem,
     ListGroupItemText
   } from "shards-react";
+
+
   
 class Cart extends Component{
    //to remove the item completely
@@ -64,6 +70,10 @@ class Cart extends Component{
              )
        return(
             <Container>
+                <Link to='/menu'>
+                <FontAwesomeIcon size="2x" icon={faUndo}/>
+                <p>Return to Menu </p>
+                </Link>
                  <h5>Your Order:</h5>
                  <ListGroup>
                     
@@ -76,10 +86,15 @@ class Cart extends Component{
                   <p>Subtotal: ${this.props.subtotal}</p>
                   <p>Tax: ${this.props.tax}</p>
                   <h5>Total: ${this.props.total}</h5>
+
+             
+                <Link to="/checkout">
                 <Button>
                     Checkout
                 </Button>
-
+                </Link>
+    
+              
             </Container>
        )
     }

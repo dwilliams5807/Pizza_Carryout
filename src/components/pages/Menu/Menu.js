@@ -81,7 +81,7 @@ class Menu extends Component {
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
             <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' className='cat-button' pill theme="info">Add</Button></span>
             <p>${item.price}</p>
            </CardBody>
           </Card>
@@ -100,7 +100,7 @@ class Menu extends Component {
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
             <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
             <p>${item.price}</p>
            </CardBody>
           </Card>
@@ -118,7 +118,7 @@ class Menu extends Component {
          <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
          <CardBody>
          <CardTitle >{item.title}</CardTitle>
-         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
          <p>${item.price}</p>
         </CardBody>
        </Card>
@@ -136,7 +136,7 @@ class Menu extends Component {
          <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
          <CardBody>
          <CardTitle >{item.title}</CardTitle>
-         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
          <p>${item.price}</p>
         </CardBody>
        </Card>
@@ -154,7 +154,7 @@ class Menu extends Component {
          <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
          <CardBody>
          <CardTitle >{item.title}</CardTitle>
-         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
          <p>${item.price}</p>
         </CardBody>
        </Card>
@@ -172,7 +172,7 @@ class Menu extends Component {
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
             <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
             <p>${item.price}</p>
            </CardBody>
           </Card>
@@ -190,7 +190,7 @@ class Menu extends Component {
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
             <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
             <p>${item.price}</p>
            </CardBody>
           </Card>
@@ -208,7 +208,7 @@ class Menu extends Component {
             <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
             <CardBody>
             <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button pill theme="info">Add</Button></span>
+            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
             <p>${item.price}</p>
            </CardBody>
           </Card>
@@ -222,7 +222,7 @@ class Menu extends Component {
    <div className="menu-div">       
      
      <Container className="menu-item-cont"> 
-        <Button block onClick={this.togglePacks}>Family and Party Packs</Button>
+        <Button theme="info" className="cat-button" block onClick={this.togglePacks}><h5 className='cat-button-text'>Family and Party Packs</h5></Button>
         <Collapse open={this.state.collapsePacks}>
           <Row> 
           {packList}
@@ -232,7 +232,7 @@ class Menu extends Component {
        </Container> 
       <br></br>
       <Container className="menu-item-cont"> 
-         <Button block onClick={this.togglePizza}>Pizzas</Button>
+         <Button theme="info" className="cat-button" block onClick={this.togglePizza}><h5 className='cat-button-text'>Pizzas</h5></Button>
           <Collapse open={this.state.collapsePizza}>
              <Row> 
             {pizzaList}
@@ -241,7 +241,7 @@ class Menu extends Component {
       </Container> 
       <br></br>
       <Container className="menu-item-cont"> 
-         <Button block onClick={this.toggleSpecialty}>Specialty Pizzas</Button>
+         <Button theme="info" className="cat-button" block onClick={this.toggleSpecialty}><h5 className='cat-button-text'>Specialty Pizzas</h5></Button>
           <Collapse open={this.state.collapseSpecialty}>
              <Row> 
             {specialList}
@@ -250,7 +250,7 @@ class Menu extends Component {
       </Container> 
       <br></br>
       <Container className="menu-item-cont"> 
-         <Button block onClick={this.toggleApps}>Apps and Wings</Button>
+         <Button theme="info" className="cat-button" block onClick={this.toggleApps}><h5 className='cat-button-text'>Apps and Wings</h5></Button>
           <Collapse open={this.state.collapseApps}>
              <Row> 
             {appList}
@@ -259,7 +259,7 @@ class Menu extends Component {
       </Container> 
       <br></br>
       <Container className="menu-item-cont"> 
-         <Button block onClick={this.toggleSalads}>Salad</Button>
+         <Button theme="info" className="cat-button" block onClick={this.toggleSalads}><h5 className='cat-button-text'>Salad</h5></Button>
           <Collapse open={this.state.collapseSalads}>
              <Row> 
             {saladList}
@@ -268,7 +268,7 @@ class Menu extends Component {
       </Container> 
       <br></br>
       <Container className="menu-item-cont"> 
-         <Button block onClick={this.toggleDesserts}>Desserts</Button>
+         <Button theme="info" className="cat-button" block onClick={this.toggleDesserts}><h5 className='cat-button-text'>Desserts</h5></Button>
           <Collapse open={this.state.collapseDesserts}>
              <Row> 
             {dessertList}
@@ -277,7 +277,7 @@ class Menu extends Component {
       </Container> 
       <br></br>
       <Container className="menu-item-cont"> 
-         <Button block onClick={this.toggleBeverages}>Beverages</Button>
+         <Button theme="info" className="cat-button" block onClick={this.toggleBeverages}><h5 className='cat-button-text'>Beverages</h5></Button>
           <Collapse open={this.state.collapseBeverages}>
              <Row> 
             {beverageList}
@@ -286,7 +286,7 @@ class Menu extends Component {
       </Container> 
       <br></br>
       <Container className="menu-item-cont"> 
-         <Button block onClick={this.toggleDeals}>Deals</Button>
+         <Button theme="info" className="cat-button" block onClick={this.toggleDeals}><h5 className='cat-button-text'>Deals</h5></Button>
           <Collapse open={this.state.collapseDeals}>
              <Row> 
             {dealsList}
