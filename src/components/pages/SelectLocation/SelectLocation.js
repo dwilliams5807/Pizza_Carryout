@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
-import { FormSelect, FormRadio, Button } from "shards-react";
+import { Button } from "shards-react";
 import { connect } from 'react-redux';
 import { setLocation } from '../../reducers/actions/cartActions.js'
 import { cartVisible } from '../../reducers/actions/cartActions.js'
+import './SelectLocation.css';
+import { Form } from 'react-bootstrap';
 
-import {
-    Form,
-    Select,
-  } from 'antd';
+  import {
 
+    Container,
+    Row,
+    Col,
 
-import Menu from '../Menu/Menu'
+  } from "shards-react";
+
 import {
     Link
   } from "react-router-dom";
+
 
 
 export class SelectLocation extends Component {
@@ -22,11 +26,10 @@ export class SelectLocation extends Component {
         
       }
     //to add the quantity
-    setLocation = (location)=>{
-        this.props.setLocation(location);
-        return (
-            <Menu/>
-        )
+    setLocation = (event)=>{
+        
+        this.props.setLocation(event.target.value);
+
     }
 
     onFinish = values => {
@@ -35,31 +38,37 @@ export class SelectLocation extends Component {
 
     render() {
         return (
+        <Container className="center">
             <div>
-                <h1>Select a Location</h1>
-
-                {/* <Form
-                    name="validate_other"
-                    onFinish={onFinish}
-                    initialValues={{
-                        ['input-number']: 3,
-                        ['checkbox-group']: ['A', 'B'],
-                        rate: 3.5,
-                    }}>
-
-
-                </Form> */}
-         
-       
-              <FormRadio value="South Austin" checked={this.props.selectedLocation === "South Austin"} onChange={() => {this.setLocation("South Austin");}}>South Austin</FormRadio>
+              <Row>
+                <Col>
+                  <div>
+                    <h1>Select a Location</h1>
+                 </div>
+                </Col>
+              </Row>
+            <Row>
+                <Col>
+              {/* <FormRadio value="South Austin" checked={this.props.selectedLocation === "South Austin"} onChange={() => {this.setLocation("South Austin");}}>South Austin</FormRadio>
      
               <FormRadio value="Mopac" checked={this.props.selectedLocation === "Mopac"} onChange={() => {this.setLocation("Mopac");}}>Mopac</FormRadio>
-              <FormRadio value="Round Rock" checked={this.props.selectedLocation === "Round Rock"} onChange={() => {this.setLocation("Round Rock");}}>Round Rock</FormRadio>
+              <FormRadio value="Round Rock" checked={this.props.selectedLocation === "Round Rock"} onChange={() => {this.setLocation("Round Rock");}}>Round Rock</FormRadio> */}
+                       <Form.Group controlId="locationForm.ControlSelectLocation">
+                            <Form.Control as="select" onChange={ this.setLocation.bind(this)}>
+                            <option value="Select Location">Select Location</option>
+                            <option value="South Austin">South Austin</option>
+                            <option value="Mopac">Mopac</option>
+                            <option value="Round Rock">Round Rock</option>
+                            </Form.Control>
+                        </Form.Group>
      
                 <Link to='/menu'>
                     <Button>Continue</Button>
                 </Link>
+                </Col>
+            </Row>
             </div>
+         </Container>
         )
     }
 }
