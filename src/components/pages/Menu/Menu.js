@@ -228,7 +228,17 @@ componentDidMount() {
     })
     return ( 
       
-   <div className="menu-div">       
+   <div className="menu-div">  
+
+         <Container className="menu-item-cont"> 
+         <Button theme="info" className="cat-button" block onClick={this.toggleDeals}><h5 className='cat-button-text'>Deals</h5></Button>
+          <Collapse open={this.state.collapseDeals}>
+             <Row> 
+            {dealsList}
+            </Row>
+         </Collapse>
+      </Container>      
+      <br></br>
      
      <Container className="menu-item-cont"> 
         <Button theme="info" className="cat-button" block onClick={this.togglePacks}><h5 className='cat-button-text'>Family and Party Packs</h5></Button>
@@ -293,15 +303,7 @@ componentDidMount() {
             </Row>
          </Collapse>
       </Container> 
-      <br></br>
-      <Container className="menu-item-cont"> 
-         <Button theme="info" className="cat-button" block onClick={this.toggleDeals}><h5 className='cat-button-text'>Deals</h5></Button>
-          <Collapse open={this.state.collapseDeals}>
-             <Row> 
-            {dealsList}
-            </Row>
-         </Collapse>
-      </Container> 
+
     
        
    </div>

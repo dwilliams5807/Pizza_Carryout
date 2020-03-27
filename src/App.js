@@ -17,7 +17,7 @@ function App() {
          <div>
           <Header />
           <Main />
-          
+          <Bumper/>
          </div>
     //  </PersistGate>
     // </Provider>

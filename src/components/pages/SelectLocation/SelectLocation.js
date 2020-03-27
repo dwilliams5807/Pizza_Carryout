@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from "shards-react";
+import { Button, Card, CardBody } from "shards-react";
 import { connect } from 'react-redux';
 import { setLocation } from '../../reducers/actions/cartActions.js'
 import { cartVisible } from '../../reducers/actions/cartActions.js'
@@ -38,8 +38,19 @@ export class SelectLocation extends Component {
 
     render() {
         return (
+
         <Container className="center">
-            <div>
+            <Card >
+                <CardBody className="masthead">
+                    <Row>
+                        <Col>
+
+                        </Col>
+                    </Row>
+                </CardBody>
+            </Card>
+            <Card>
+              <CardBody>
               <Row>
                 <Col>
                   <div>
@@ -63,11 +74,12 @@ export class SelectLocation extends Component {
                         </Form.Group>
      
                 <Link to='/menu'>
-                    <Button>Continue</Button>
+                    <Button>Start Order</Button>
                 </Link>
                 </Col>
             </Row>
-            </div>
+        </CardBody>
+            </Card>
          </Container>
         )
     }

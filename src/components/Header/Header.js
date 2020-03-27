@@ -39,7 +39,7 @@ class Header extends Component{
       </NavbarBrand>
        <NavLink className="nav-link" href='/'> 
        <FontAwesomeIcon size="2x" icon={faMapMarkerAlt}/>
-          {this.props.location}
+        {this.props.location}
        </NavLink>
      </Navbar>
      )
