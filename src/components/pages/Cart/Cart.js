@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { removeItem,addQuantity,subtractQuantity} from '../../reducers/actions/cartActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUndo } from '@fortawesome/free-solid-svg-icons'
+import { cartVisible } from '../../reducers/actions/cartActions.js'
+
 import "./Cart.css";
 
 
@@ -37,6 +39,10 @@ class Cart extends Component{
     handleSubtractQuantity = (id)=>{
         this.props.subtractQuantity(id);
     }
+    componentDidMount() {
+        this.props.cartVisible(false); 
+        
+      }
 
     render(){
               
@@ -106,13 +112,17 @@ const mapStateToProps = (state)=>{
         subtotal: (state.total).toFixed(2),
         tax: (state.total * 0.0825).toFixed(2),
         total: ( state.total * 0.0825 + state.total).toFixed(2),
+        cartState: state.isCartVisible
     }
 }
 const mapDispatchToProps = (dispatch)=>{
     return{
         removeItem: (id)=>{dispatch(removeItem(id))},
         addQuantity: (id)=>{dispatch(addQuantity(id))},
-        subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
+        subtractQuantity: (id)=>{dispatch(subtractQuantity(id))},
+        cartVisible: (visible)=>{dispatch(cartVisible(visible))},
+
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

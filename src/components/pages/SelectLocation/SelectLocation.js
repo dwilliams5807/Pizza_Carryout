@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { FormSelect, FormRadio, Button } from "shards-react";
 import { connect } from 'react-redux';
 import { setLocation } from '../../reducers/actions/cartActions.js'
+import { cartVisible } from '../../reducers/actions/cartActions.js'
+
 import {
     Form,
     Select,
@@ -15,7 +17,10 @@ import {
 
 
 export class SelectLocation extends Component {
-
+    componentDidMount() {
+        this.props.cartVisible(false); 
+        
+      }
     //to add the quantity
     setLocation = (location)=>{
         this.props.setLocation(location);
@@ -67,6 +72,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return{
         setLocation: (location)=>{dispatch(setLocation(location))},
+        cartVisible: (visible)=>{dispatch(cartVisible(visible))},
  
     }
 }

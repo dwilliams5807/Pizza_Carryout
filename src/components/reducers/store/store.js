@@ -8,7 +8,7 @@ import cartReducer from '../cartReducer'; // the value from combineReducers
 const persistConfig = {
  key: 'root',
  storage: storage,
- whitelist: ['addedItems'],
+//  whitelist: ['addedItems'],
  stateReconciler: autoMergeLevel2 // see "Merge Process" section for details.
 };
 

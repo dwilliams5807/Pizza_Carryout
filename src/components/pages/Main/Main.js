@@ -25,17 +25,11 @@ import {
 
 
 class Main extends React.Component {
-  
-  toggleCartOn = () => {
-    this.setState({ isCartVisible: !this.state.isCartVisible === true});
-  };
-  toggleCartOff = () => {
-    this.setState({ isCartVisible: !this.state.isCartVisible === false  });
-  };
+
 
   render() {
 
-
+    const cartVisible = this.props.cartVisible
     return (
 
       
@@ -56,7 +50,9 @@ class Main extends React.Component {
            <Animate
            change="bounce"
                >
-            <div className="cart-badge">
+            <div className="cart-badge" 
+            style={{ display: cartVisible ? '' : 'none' }}
+            >
           
               <Badge  theme="light">
                 <Link className="cart-link" to="/cart">
@@ -92,7 +88,8 @@ class Main extends React.Component {
 const mapStateToProps = (state)=>{
   return{
       total: state.addedItems.length,
-      totalUnits: state.totalUnits
+      totalUnits: state.totalUnits,
+      cartVisible: state.isCartVisible
   }
 }
 

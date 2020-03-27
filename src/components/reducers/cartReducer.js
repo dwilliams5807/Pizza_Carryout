@@ -4,7 +4,7 @@ import Item3 from '../../images/pizza_supreme.jpg'
 import Item4 from '../../images/pizza-veg.png'
 import Item5 from '../../images/meat.png'
 import Item6 from '../../images/pizza-bbq.jpg'
-import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,SET_LOCATION } from './actions/cartActions.js'
+import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,SET_LOCATION,CART_VISIBLE } from './actions/cartActions.js'
 import { CHECKOUT } from './actions/checkout.js'
 ;
 
@@ -183,6 +183,17 @@ const cartReducer= (state = initState,action)=>{
            selectedLocation: newLocation
        }
  }
+ if(action.type=== CART_VISIBLE){
+    
+     
+    let isVisible = action.visible
+    return{
+        ...state,
+        isCartVisible: isVisible
+    }
+}
+
+ 
 
 
   return state

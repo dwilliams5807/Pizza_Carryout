@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 import './Menu.css';
-import { addToCart } from '../../reducers/actions/cartActions.js'
+import { addToCart, cartVisible } from '../../reducers/actions/cartActions.js'
+import  store  from '../../reducers/store/store.js'
+
 import {
   Button,
   Card,
@@ -66,8 +68,13 @@ class Menu extends Component {
 
   handleClick = (id)=>{
     this.props.addToCart(id); 
+    this.props.cartVisible(true); 
 }
 
+componentDidMount() {
+  this.props.cartVisible(true); 
+  
+}
 
 
   render() {
@@ -323,6 +330,9 @@ const mapDispatchToProps= (dispatch)=>{
     
   return{
       addToCart: (id)=>{dispatch(addToCart(id))},
+      cartVisible: (visible)=>{dispatch(cartVisible(visible))},
+
+      
   }
 }
 
