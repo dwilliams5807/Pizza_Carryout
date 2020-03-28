@@ -7,7 +7,7 @@
     width: 100%;
 }
 .brand-image {
-    background-image: url(../../images/CECLogo_Type_White_No_S.png);
+    background-image: url('../../images/CECLogo_Type_White_No_S.png');
     background-size: 100% ;
     background-repeat: no-repeat;
 }
@@ -20,5 +20,9 @@
 
 .nav-link {
     color: white;
-    
+    font-family:  'CECFont';
 }
+h4 {
+    font-family:  'CECFont2';
+    color: white;
+ }

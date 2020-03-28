@@ -35,7 +35,7 @@ class Header extends Component{
      return(
       <Navbar className="navbar" type="dark">
       <NavbarBrand className="" href="#">
-       Chuck E. Carryout
+       <h4>Chuck E. Carryout</h4>
       </NavbarBrand>
        <NavLink className="nav-link" href='/'> 
        <FontAwesomeIcon size="2x" icon={faMapMarkerAlt}/>

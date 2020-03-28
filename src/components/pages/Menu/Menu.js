@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import './Menu.css';
 import { addToCart, cartVisible } from '../../reducers/actions/cartActions.js'
+import { icon} from '../../../images/chuck-icon.png'
+
+
 import  store  from '../../reducers/store/store.js'
+
 
 import {
   Button,
@@ -24,6 +28,7 @@ import Main from "../Main/Main";
 
 
 
+
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -35,10 +40,15 @@ class Menu extends Component {
     this.toggleSalads = this.toggleSalads.bind(this);
     this.toggleDesserts = this.toggleDesserts.bind(this);
     this.toggleBeverages = this.toggleBeverages.bind(this);
+    this.toggleInd = this.toggleInd.bind(this);
+    this.toggleMed = this.toggleMed.bind(this);
+    this.toggleLar = this.toggleLar.bind(this);
+
+
 
    
 
-    this.state = {  collapsePizza: false, collapseSpecialty: false, collapseApps: false, collapsePacks: false, collapseDeals: false, collapseSalads: false, collapseDesserts: false, collapseBeverages: false };
+    this.state = {  collapsePizza: false, collapseInd: false, collapseMed: false, collapseLar: false, collapseSpecialty: false, collapseApps: false, collapsePacks: false, collapseDeals: false, collapseSalads: false, collapseDesserts: false, collapseBeverages: false };
   }
 
   togglePizza() {
@@ -65,6 +75,15 @@ class Menu extends Component {
   toggleBeverages() {
     this.setState({ collapseBeverages: !this.state.collapseBeverages });
   }
+  toggleInd() {
+    this.setState({ collapseInd: !this.state.collapseInd });
+  }
+  toggleMed() {
+    this.setState({ collapseMed: !this.state.collapseMed });
+  }
+  toggleLar() {
+    this.setState({ collapseLar: !this.state.collapseLar });
+  }
 
   handleClick = (id)=>{
     this.props.addToCart(id); 
@@ -81,57 +100,60 @@ componentDidMount() {
     
 
       
-    let pizzaList = this.props.pizzas.map(item=>{
-      return (
+    // let pizzaList = this.props.pizzas.map(item=>{
+    //   return (
         
-        <Col className="">
-           
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
-            <CardBody>
-            <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' className='cat-button' pill theme="info">Add</Button></span>
-            <p>${item.price}</p>
-           </CardBody>
-          </Card>
-          
-        </Col>
+    //  <Col sm="12" md="6" className="">
+    //     <Container fluid className='centered'>
+    //      <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+    //      <CardBody>
+    //      <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+    //      <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+    //      <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
+    //     </CardBody>
+    //    </Card>
+    //    </Container>
+    //  </Col>
         
-      )
-    })
+    //   )
+    // })
     
     let specialList = this.props.specialty.map(item=>{
       return (
         
-        <Col className="">
-          
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
-            <CardBody>
-            <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
-            <p>${item.price}</p>
-           </CardBody>
-          </Card>
-          
-        </Col>
+     <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+         <CardBody>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
+        </CardBody>
+       </Card>
+       </Container>
+     </Col> 
         
       )
     })
     let appList = this.props.apps.map(item=>{
       return (
         
-     <Col className="">
-       
-         <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-         <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
+     <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
          <CardBody>
-         <CardTitle >{item.title}</CardTitle>
-         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
-         <p>${item.price}</p>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
         </CardBody>
        </Card>
-       
+       </Container>
      </Col>
         
       )
@@ -139,17 +161,18 @@ componentDidMount() {
     let packList = this.props.packs.map(item=>{
       return (
         
-       <Col className="">
-      
-         <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-         <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
+       <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
          <CardBody>
-         <CardTitle >{item.title}</CardTitle>
-         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
-         <p>${item.price}</p>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
         </CardBody>
        </Card>
-     
+       </Container>
      </Col>
         
       )
@@ -157,17 +180,18 @@ componentDidMount() {
     let dealsList = this.props.deals.map(item=>{
       return (
         
-       <Col className="">
-      
-         <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-         <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
+     <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
          <CardBody>
-         <CardTitle >{item.title}</CardTitle>
-         <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
-         <p>${item.price}</p>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
         </CardBody>
        </Card>
-   
+       </Container>
      </Col>
         
       )
@@ -175,54 +199,123 @@ componentDidMount() {
     let saladList = this.props.salads.map(item=>{
       return (
         
-        <Col className="">
-        
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
-            <CardBody>
-            <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
-            <p>${item.price}</p>
-           </CardBody>
-          </Card>
-     
-        </Col>
+    <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+         <CardBody>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
+        </CardBody>
+       </Card>
+       </Container>
+     </Col>
         
       )
     })
     let dessertList = this.props.desserts.map(item=>{
       return (
         
-        <Col className="">
-        
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
-            <CardBody>
-            <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
-            <p>${item.price}</p>
-           </CardBody>
-          </Card>
-      
-        </Col>
+    <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+         <CardBody>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
+        </CardBody>
+       </Card>
+       </Container>
+     </Col>
         
       )
     })
     let beverageList = this.props.beverages.map(item=>{
       return (
         
-        <Col className="">
+    <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+         <CardBody>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
+        </CardBody>
+       </Card>
+       </Container>
+     </Col>
+        
+      )
+    })
+    let indList = this.props.ind.map(item=>{
       
-            <Card className="mt-2 mb-2 item-col" style={{ maxWidth: "200px"}}  key={item.id}>
-            <CardImg style={{ height: "120px"}} src={item.img} alt={item.title} />
-            <CardBody>
-            <CardTitle >{item.title}</CardTitle>
-            <span style={{ position: "absolute", bottom: 20, right: 40 }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button className='add-button' pill theme="info">Add</Button></span>
-            <p>${item.price}</p>
-           </CardBody>
-          </Card>
-     
-        </Col>
+      return (
+        
+    <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+         <CardBody>
+           <Row>
+             <Col className={item.style} sm='5'>
+               <img style={{ height: "75px", marginBottom: "10px", }} src={item.img} />
+                </Col>
+                <Col >
+                <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+                </Col>
+                </Row>
+                <Row>
+                  <Col sm='12'>
+                    <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+                </Col>
+                </Row>
+                </CardBody>
+              </Card>
+              </Container>
+            </Col>
+        
+      )
+    })
+    let medList = this.props.med.map(item=>{
+      return (
+        
+    <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+         <CardBody>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
+        </CardBody>
+       </Card>
+       </Container>
+     </Col>
+        
+      )
+    })
+    let larList = this.props.large.map(item=>{
+      return (
+        
+    <Col sm="12" md="6" className="">
+        <Container fluid className='centered'>
+         <Card className="mt-2 mb-2 center item-card" style={{ width: "100%"}}  key={item.id}>
+         <CardBody>
+         <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+         <img style={{ height: "120px"}} src={item.img} alt={item.title} />
+
+         <span style={{  }} to="/" onClick={()=>{this.handleClick(item.id)}}><Button block className='add-button' pill theme="info">ADD TO CART</Button></span>
+         
+        </CardBody>
+       </Card>
+       </Container>
+     </Col>
         
       )
     })
@@ -231,7 +324,7 @@ componentDidMount() {
    <div className="menu-div">  
 
          <Container className="menu-item-cont"> 
-         <Button theme="info" className="cat-button" block onClick={this.toggleDeals}><h5 className='cat-button-text'>Deals</h5></Button>
+         <Button theme="info" className="add-button" block onClick={this.toggleDeals}><h5 className='cat-button-text'>Deals</h5></Button>
           <Collapse open={this.state.collapseDeals}>
              <Row> 
             {dealsList}
@@ -243,7 +336,7 @@ componentDidMount() {
      <Container className="menu-item-cont"> 
         <Button theme="info" className="cat-button" block onClick={this.togglePacks}><h5 className='cat-button-text'>Family and Party Packs</h5></Button>
         <Collapse open={this.state.collapsePacks}>
-          <Row> 
+          <Row>
           {packList}
           </Row>
       
@@ -253,9 +346,24 @@ componentDidMount() {
       <Container className="menu-item-cont"> 
          <Button theme="info" className="cat-button" block onClick={this.togglePizza}><h5 className='cat-button-text'>Pizzas</h5></Button>
           <Collapse open={this.state.collapsePizza}>
+          <Button theme="info" className="add-button" block onClick={this.toggleInd}><h5 className='cat-button-text'>Individual</h5></Button>
+            <Collapse open={this.state.collapseInd}>
              <Row> 
-            {pizzaList}
+            {indList}
             </Row>
+           </Collapse>
+           <Button theme="info" className="add-button" block onClick={this.toggleMed}><h5 className='cat-button-text'>Medium</h5></Button>
+           <Collapse open={this.state.collapseMed}>
+             <Row> 
+            {medList}
+            </Row>
+           </Collapse>
+           <Button theme="info" className="add-button" block onClick={this.toggleLar}><h5 className='cat-button-text'>Large</h5></Button>
+           <Collapse open={this.state.collapseLar}>
+             <Row> 
+            {larList}
+            </Row>
+           </Collapse>
          </Collapse>
       </Container> 
       <br></br>
@@ -323,7 +431,10 @@ const mapStateToProps = (state)=>{
     beverages: state.beverages,
     apps: state.apps,
     salads: state.salads,
-    visible: state.isCartVisible
+    visible: state.isCartVisible,
+    ind: state.individualPizzas,
+    med: state.mediumPizzas,
+    large: state.largePizzas,
 
   }
 }

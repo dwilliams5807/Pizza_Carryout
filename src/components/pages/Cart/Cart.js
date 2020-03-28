@@ -18,10 +18,12 @@ import {
     Container,
     Row,
     Col,
+    ButtonGroup,
     CardBody,
     ListGroup,
     ListGroupItem,
-    ListGroupItemText
+    ListGroupItemText,
+    CardFooter
   } from "shards-react";
 
 
@@ -54,13 +56,15 @@ class Cart extends Component{
                         
                           <ListGroupItem className="" key={item.id}>
                               <ListGroupItemText>
-                                  {item.quantity} X {item.title} @ ${item.price}/ Ea
+                                  {item.quantity}  <Link to='/cart'>
+                                  <ButtonGroup vertical>
+                                        <Button outline pill size='sm' onClick={()=>{this.handleAddQuantity(item.id)}}>+</Button>
+                                        <Button outline pill size='sm' onClick={()=>{this.handleSubtractQuantity(item.id)}}>-</Button>
+                                 </ButtonGroup>
+                              </Link>   <p>{item.title} (${item.price}/ Ea)</p>  
                               </ListGroupItemText>
                              <ListGroupItemText>
-                              <Link to='/cart'>
-                              <Button onClick={()=>{this.handleAddQuantity(item.id)}}>+</Button>
-                              <Button onClick={()=>{this.handleSubtractQuantity(item.id)}}>-</Button>
-                              </Link>
+
                               </ListGroupItemText>
                     
                   
@@ -72,36 +76,44 @@ class Cart extends Component{
             ):
 
              (
-                <p>The cart is empty. Click on Menu to order something.</p>
+                <p>The cart is empty. </p>
              )
        return(
-            <Container>
-                <Link to='/menu'>
-                <FontAwesomeIcon size="2x" icon={faUndo}/>
-                <p>Return to Menu </p>
-                </Link>
-                 <h5>Your Order:</h5>
-                 <ListGroup>
+           <Container className='menu-return'>
+           <Link to='/menu'>
+           <FontAwesomeIcon size="1x" icon={faUndo}/>
+           <h5>Return to Menu </h5>
+           </Link>
+            <Container className="cart-order-sum">
+                <Card>
+                    <CardHeader>
+                       <h5>Your Order:</h5>
+                </CardHeader>
+                   <CardBody>
+                    <ListGroup>
                     
                     
                         {addedItems}
                      
                
-                </ListGroup>
-                  
-                  <p>Subtotal: ${this.props.subtotal}</p>
-                  <p>Tax: ${this.props.tax}</p>
+                  </ListGroup>
+                 </CardBody>
+                 <CardFooter>
+                  <p>Subtotal: ${this.props.subtotal} Tax: ${this.props.tax}</p>
                   <h5>Total: ${this.props.total}</h5>
-
+                    <Link to="/checkout">
+                        <Button>
+                            <h5>Checkout</h5>
+                        </Button>
+                    </Link>
+               </CardFooter>
              
-                <Link to="/checkout">
-                <Button>
-                    Checkout
-                </Button>
-                </Link>
-    
-              
+                </Card>
             </Container>
+            
+
+          </Container>
+            
        )
     }
 }

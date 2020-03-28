@@ -1,27 +1,42 @@
-.item-col {
-    margin: 0 auto;
-    
+.item-card {
+   position: relative;
+    font-family:  'CECFontpb';
+
 }
 
 .menu-div {
     position: relative;
     top: 10px;
-}
-
-#avatar {
-    width: 50px;
-    height: 50px;
+  
 }
 
 
 .cat-button {
     background-color: #673685;
-
 }
 .add-button {
     background-color:  #c42939;
-
+    font-family:  'CECFont';
 }
 .cat-button-text {
     color: white;
+    font-family:  'CECFont';
 }
+
+.item-card-title {
+    font-family:  'CECFont';
+}
+.menu-item-cont {
+    text-align: center;
+}
+
+.centered {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .no-image {
+      display: none;
+  }
