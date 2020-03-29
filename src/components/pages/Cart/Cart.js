@@ -52,25 +52,26 @@ class Cart extends Component{
             (  
                 this.props.items.map(item=>{
                     return(
-
                         
-                          <ListGroupItem className="" key={item.id}>
-                              <ListGroupItemText>
-                                  {item.quantity}  <Link to='/cart'>
+                            
+                           <ListGroupItem className="" key={item.id}>
+                               <Row>
+                             <Col xs="4">
+                                 <p>{item.quantity}&nbsp;
+                                  <Link to='/cart'>
                                   <ButtonGroup vertical>
-                                        <Button outline pill size='sm' onClick={()=>{this.handleAddQuantity(item.id)}}>+</Button>
-                                        <Button outline pill size='sm' onClick={()=>{this.handleSubtractQuantity(item.id)}}>-</Button>
-                                 </ButtonGroup>
-                              </Link>   <p>{item.title} (${item.price}/ Ea)</p>  
-                              </ListGroupItemText>
-                             <ListGroupItemText>
-
-                              </ListGroupItemText>
+                                        <Button outline pill size='sm' onClick={()=>{this.handleAddQuantity(item.id)}}>&#9650;</Button>
+                                        <Button outline pill size='sm' onClick={()=>{this.handleSubtractQuantity(item.id)}}>&#9660;</Button>
+                                 </ButtonGroup></Link></p>  </Col>
+                                 <Col xs='4'><p>{item.title}</p>   </Col>
+                                 <Col xs='4'><p>${item.price}</p></Col>
+                              
                     
-                  
+                              </Row>
                           </ListGroupItem>
                       
-                                             
+                          
+                       
                     )
                 })
             ):
@@ -90,7 +91,7 @@ class Cart extends Component{
                        <h5>Your Order:</h5>
                 </CardHeader>
                    <CardBody>
-                    <ListGroup>
+                    <ListGroup flush>
                     
                     
                         {addedItems}
@@ -102,7 +103,7 @@ class Cart extends Component{
                   <p>Subtotal: ${this.props.subtotal} Tax: ${this.props.tax}</p>
                   <h5>Total: ${this.props.total}</h5>
                     <Link to="/checkout">
-                        <Button>
+                        <Button block>
                             <h5>Checkout</h5>
                         </Button>
                     </Link>

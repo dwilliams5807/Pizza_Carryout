@@ -74,7 +74,7 @@ export class SelectLocation extends Component {
                         </Form.Group>
      
                 <Link to='/menu'>
-                    <Button>Start Order</Button>
+                    <Button style={{ fontFamily: 'CECFont'}}>Start Order</Button>
                 </Link>
                 </Col>
             </Row>

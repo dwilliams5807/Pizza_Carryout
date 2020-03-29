@@ -224,7 +224,7 @@ componentDidMount() {
                <img style={{ height: "75px", marginBottom: "10px", }} src={item.img} />
                 </Col>
                 <Col >
-                <CardTitle className="item-card-title" >{item.title}</CardTitle><p>${item.price}</p>
+                <CardTitle className="item-card-title" >{item.title}</CardTitle>
                 </Col>
                 </Row>
                 <Row>
