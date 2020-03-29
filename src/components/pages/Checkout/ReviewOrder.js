@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUndo } from '@fortawesome/free-solid-svg-icons'
 import { connect} from 'react-redux'
-import { ListGroup, ListGroupItem, ListGroupItemText, Button, Container, Row, Col, Card, CardBody } from "shards-react";
+import { ListGroup, ListGroupItem, ListGroupItemText, Button, Container, Row, Col, Card, CardBody, CardFooter, CardHeader } from "shards-react";
+import "./Checkout.css";
 
 
 class ReviewOrder extends Component{
@@ -24,9 +27,9 @@ class ReviewOrder extends Component{
 
                         
                           <ListGroupItem className="" key={item.id}>
-                              <ListGroupItemText>
-                                  {item.quantity} X {item.title} ${item.price * item.quantity}
-                              </ListGroupItemText>
+                              
+                                  <p>{item.quantity} X {item.title} ${item.price * item.quantity}</p>
+                             
                           </ListGroupItem>
                       
                                              
@@ -34,52 +37,65 @@ class ReviewOrder extends Component{
                 })
             ):
             (
+                <ListGroupItem>
                 <p>There are no items in your order.</p>
+                </ListGroupItem>
              )
         return(
-            <div>
-                <Container>
-                    <Row>
-                        <Col>
-                           <h1 className="ui centered">Review Your Order</h1>
-                           <Button onClick={this.back}>Back</Button>
-                       </Col>
-                    </Row>
-
-                    <Row>
-                      <Col>
-                           <Card>
-                               <CardBody>
-                                   <ListGroup>
-                                       {addedItems}
-                                       <ListGroupItem>Subtotal: ${this.props.subtotal} Tax: ${this.props.tax}</ListGroupItem>
-                                       <ListGroupItem><h5>Total: ${this.props.total}</h5></ListGroupItem> 
-                                       
-
-                                   </ListGroup>
-                               </CardBody>
-                           </Card>
-                        </Col>
-                        <Col>
-                           <Card>
-                               <CardBody>
-                                    <ListGroup>
-                                        <ListGroupItem>Pickup name: {name}</ListGroupItem>
-                                        <ListGroupItem>Order confirmation will be sent to {email}</ListGroupItem>
-                                        <ListGroupItem>Phone:{phone}</ListGroupItem>
-                                        <ListGroupItem>Location:{this.props.location}</ListGroupItem>
-                                        <ListGroupItem>Pickup Time: Ready in 15-20 minutes</ListGroupItem>
+            
+                <Container>           
+                  <Link to='/menu'>
+                   <FontAwesomeIcon size="1x" icon={faUndo}/>
+                  <h5>Return to Menu </h5>
+                  </Link> 
+                    
+                    <Card>
+                        <CardHeader>
+                           <h1 className="centered">Review Your Order</h1>
+                        </CardHeader>
+                        <CardBody>
+                            <Row>
+                                <Col xs='8'>
+                                <ListGroup className="" small flush>
+                                   {addedItems}
                                     </ListGroup>
-                               </CardBody>
-                           </Card>
-                        </Col>
-                    </Row>
+                                </Col>
+                                <Col xs='4'>
+                                <div className="">
+                                        <h5 style={{ color:'Purple'}}>Order Details</h5>
+                                        <h6>Pickup name</h6><p>{name}</p>
+                                        <h6>Contact</h6><p>{email} {phone}</p>
+                                        <h6>Location</h6><p>{this.props.location}</p>
+                                        <h6>Order Ready</h6><p>15 to 20 minutes</p>
+                                        <p style={{ color:'blue'}}onClick={this.back}>edit details</p>
+                                    </div>
+                                </Col>
+                            </Row>
+
+                        </CardBody>
+                        <CardFooter>
+                            <Row>
+                                <Col>       
+                                    <ListGroup className="centered" small flush>
+                                    <ListGroupItem>Subtotal: ${this.props.subtotal} Tax: ${this.props.tax}</ListGroupItem>
+                                    <ListGroupItem><h5>Total: ${this.props.total}</h5></ListGroupItem> 
+                                    </ListGroup>
+                                </Col>
+                            </Row>        
+                            <Row>
+                                <Col>
+                                    <Button block onClick={this.saveAndContinue}><h5>Place order</h5></Button>
+                                    </Col>
+                                </Row>
+                        </CardFooter>
+
+
+                 </Card>
                 </Container>
                 
 
                 
-                <Button block onClick={this.saveAndContinue}>Confirm Order</Button>
-            </div>
+           
         )
     }
 }
