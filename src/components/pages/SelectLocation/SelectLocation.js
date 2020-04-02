@@ -49,7 +49,7 @@ export class SelectLocation extends Component {
         return (
           <div>
           <Alert dismissible={this.dismiss} open={this.state.visible}>
-          <strong>Note:</strong>This ordering system is a <strong> demo. </strong> It <strong>does not accept real orders. </strong> feel free <br/> to place as many pretend orders as you want as you would like.
+          <strong>Note: </strong>This ordering system is a <strong> demo. </strong> It <strong>does not accept real orders. </strong> feel free <br/> to place as many pretend orders as you would like.
           </Alert>
     
         <Container className="center">
