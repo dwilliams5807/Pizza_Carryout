@@ -1,0 +1,26 @@
+.nav-menu-container {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-height: 100px;
+
+}
+
+.cart-badge {
+  position: fixed;
+  right: 50px;
+  bottom: 115px;
+
+  
+}
+
+.cart-link {
+  
+  color: red;
+}
+h3 {
+  
+  color: purple;
+}
+

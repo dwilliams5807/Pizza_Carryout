@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+font-family: 'CECFont', 'CECFont2', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: 'CECFont2';
+  src: local('CECFont2'), url('./fonts/cecfont2.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CECFont';
+  src: local('CECFont'), url('./fonts/cecfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'CECFontp';
+  src: local('CECFontp'), url('./fonts/cecfontp.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'CECFontpb';
+  src: local('CECFontpb'), url('./fonts/cecfontpb.ttf') format('truetype');
+}

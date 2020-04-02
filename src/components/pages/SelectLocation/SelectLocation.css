@@ -1,0 +1,15 @@
+.center {
+    text-align: center;
+    
+}
+.masthead {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../../images/wing_pizza_deal.jpg");
+    background-color: #6A3886;
+}
+
+h1 {
+   font-family:  'CECFont';
+}
