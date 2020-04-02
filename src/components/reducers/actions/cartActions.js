@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export const SET_LOCATION = 'SET_LOCATION';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
@@ -47,3 +48,14 @@ export const addQuantity=(id)=>{
         id
     }
 }
+=======
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const addToCart= (id)=>{
+    return{
+        type: ADD_TO_CART,
+         id }
+    }
+
+    export default addToCart
+
+>>>>>>> r1remote/master
