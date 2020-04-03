@@ -1,3 +1,3 @@
 React and Redux Pizza Ordering App
 
-https://chuckecarryout.herokuapp.com
+https://cec-carryouy-demo.web.app
