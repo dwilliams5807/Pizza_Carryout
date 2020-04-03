@@ -1,5 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import { connect} from 'react-redux'
@@ -96,15 +95,3 @@ const mapStateToProps = (state)=>{
 
 export default connect(mapStateToProps)(Main)
 
-=======
-
-
-function Main () {
-  return (
-    <div>
-      <p>Landing Screen</p>
-    </div>
-  );
-  }
-  export default Main;
->>>>>>> r1remote/master

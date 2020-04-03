@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeItem,addQuantity,subtractQuantity} from '../../reducers/actions/cartActions'
@@ -10,10 +9,6 @@ import { cartVisible } from '../../reducers/actions/cartActions.js'
 import "./Cart.css";
 
 
-=======
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
->>>>>>> r1remote/master
 import {
     Card,
     CardTitle,
@@ -23,7 +18,6 @@ import {
     Container,
     Row,
     Col,
-<<<<<<< HEAD
     ButtonGroup,
     CardBody,
     ListGroup,
@@ -51,11 +45,6 @@ class Cart extends Component{
         this.props.cartVisible(false); 
         
       }
-=======
-    CardBody
-  } from "shards-react";
-class Cart extends Component{
->>>>>>> r1remote/master
 
     render(){
               
@@ -63,7 +52,6 @@ class Cart extends Component{
             (  
                 this.props.items.map(item=>{
                     return(
-<<<<<<< HEAD
                         
                             
                            <ListGroupItem className="" key={item.id}>
@@ -84,31 +72,11 @@ class Cart extends Component{
                       
                           
                        
-=======
-
-                        
-                          <Col className="">
-                             <Card classname="mt-2 mb-2 cart-col" style={{ maxWidth: "300px" }} key={item.id}>
-                              <CardImg style={{height: "100px", width: "200px"}} src={item.img} />
-                              <CardBody>
-                              <CardTitle>{item.title}</CardTitle>
-                              <p><b>Price: ${item.price}</b></p>
-                              <p><b>Quantity: {item.quantity}</b></p> 
-                              <Button>+</Button>
-                              <Button>-</Button>
-                             </CardBody>
-                    
-                           </Card>
-                          </Col>
-                      
-                                             
->>>>>>> r1remote/master
                     )
                 })
             ):
 
              (
-<<<<<<< HEAD
                 <p>The cart is empty. </p>
              )
        return(
@@ -124,20 +92,11 @@ class Cart extends Component{
                 </CardHeader>
                    <CardBody>
                     <ListGroup flush>
-=======
-                <p>The cart is empty. Click on Menu to order something.</p>
-             )
-       return(
-            <Container>
-                 <h5>Your Order:</h5>
-                <Row> 
->>>>>>> r1remote/master
                     
                     
                         {addedItems}
                      
                
-<<<<<<< HEAD
                   </ListGroup>
                  </CardBody>
                  <CardFooter>
@@ -156,17 +115,12 @@ class Cart extends Component{
 
           </Container>
             
-=======
-                </Row>
-            </Container>
->>>>>>> r1remote/master
        )
     }
 }
 
 const mapStateToProps = (state)=>{
     return{
-<<<<<<< HEAD
         items: state.addedItems,
         subtotal: (state.total).toFixed(2),
         tax: (state.total * 0.0825).toFixed(2),
@@ -185,10 +139,3 @@ const mapDispatchToProps = (dispatch)=>{
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
-=======
-        items: state.addedItems
-    }
-}
-
-export default connect(mapStateToProps)(Cart)
->>>>>>> r1remote/master
