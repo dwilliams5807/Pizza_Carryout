@@ -1,0 +1,123 @@
+import {
+  APP_JSON,
+  DFP_SESSION_ID,
+  FORM_URL_ENCODED,
+  X_CORRELATION_ID,
+  X_THMID
+} from '../constants/common-enums';
+import CONFIG from '../settings';
+//import { helpers as GTMUtil } from 'vco-component-metrics';
+import parseApiError from './parse-api-error';
+import serializeObject from './serialize-object';
+import StaticIdSingletonClass from './static-id';
+
+export const defaultHeaders = {
+  Accept: APP_JSON,
+  'Content-Type': APP_JSON
+};
+
+//TODO - System SDK - Need to handle the generic response handler
+/*const sendAPIErrorEvent = (errorResponse, url) => {
+  if (errorResponse) {
+    const params = {
+      api: url,
+      errorCode: errorResponse.errorCode,
+      errorMessage: errorResponse.errorMessage,
+      errorStatus: errorResponse.httpStatus
+    };
+
+    GTMUtil.sendAPIErrorEvent(params);
+  }
+};*/
+
+const handleJsonResponse = res => {
+  //Returns null if status is not in the range 200-299
+  /*const api = res.url
+    ? res.url.replace(/http(?:s)?:\/\/((\w|-)*\.)*(\w|-)*(\:[0-9]{1,4})?/, '')
+    : undefined;*/
+  if (!res.ok) {
+    return res
+      .json()
+      .then(data => {
+        const parsedData = parseApiError(Object.assign({}, { httpStatus: res.status }, data));
+        //sendAPIErrorEvent(parsedData, api);
+        return parsedData;
+      })
+      .catch(() => {
+        const parsedData = parseApiError(Object.assign({}, { httpStatus: res.status }));
+        //sendAPIErrorEvent(parsedData, api);
+        return parsedData;
+      });
+  }
+
+  const headers = {};
+  res.headers.forEach((v, k) => {
+    headers[k] = v;
+  });
+
+  return (
+    res
+      .json()
+      .then(data => ({
+        data,
+        headers,
+        ok: res.ok
+      }))
+      //GTMUtil.sendApiSuccessEvent({ api });
+      .catch(() => ({ headers, ok: res.ok }))
+  );
+};
+
+const getVbaToken = () => {
+  return new Promise(resolve => {
+    if (window.VAAP) {
+      window.VAAP.getToken(token => resolve(token));
+    } else {
+      resolve(null);
+    }
+  });
+};
+
+const fetchReq = async options => {
+  //Init & get CorrelationId in Singleton Class
+  const { url, body, method, headers } = options;
+  const finalHeaders = headers || defaultHeaders;
+  finalHeaders[X_CORRELATION_ID] = StaticIdSingletonClass.correlationId;
+  const sessionId = StaticIdSingletonClass.sessionId || CONFIG.application.defaults.dfpSessionId;
+  finalHeaders[X_THMID] = sessionId;
+  finalHeaders[DFP_SESSION_ID] = sessionId;
+  const contentType = finalHeaders['Content-Type'];
+  let finalBody = {};
+
+  if (contentType === FORM_URL_ENCODED) {
+    finalBody = serializeObject(body);
+  } else {
+    finalBody = JSON.stringify(body);
+  }
+
+  const vbaToken = await getVbaToken();
+  if (vbaToken) {
+    finalHeaders['v-c-vaap-token'] = vbaToken;
+  }
+
+  return fetch(
+    url,
+    Object.assign(
+      {},
+      {
+        body: finalBody,
+        credentials: 'same-origin',
+        headers: finalHeaders,
+        method
+      }
+    )
+  )
+    .then(res => handleJsonResponse(res))
+    .catch(error => {
+      // eslint-disable-next-line no-console
+      console.error(error);
+      return error;
+    }); // eslint-disable-line
+};
+
+export default fetchReq;
